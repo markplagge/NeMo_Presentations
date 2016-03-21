@@ -80,6 +80,7 @@ Neuromorphic computing is "Non von Neumann"
 ### NeMo – An Open Source Neuromorphic Hardware Simulation Model
 
 
+## NeMo
 #### Design and implementation
 -   Implemented using ROSS
 -   Event-Driven
@@ -88,21 +89,21 @@ Neuromorphic computing is "Non von Neumann"
 -   Supports Reverse Computation
 
 
-### NeMo – An Open Source Neuromorphic Hardware Simulation Model
-#### Open Source
-#### Flexible Hardware Models
+### NeMo
+-	Open Source
+-	Flexible Hardware Models
 -   Supports current neuromorphic design
 -   Can simulate novel designs
 -   Can even simulate currently "impossible" designs
 
 
-### NeMo – An Open Source Neuromorphic Hardware Simulation Model
+### NeMo
 #### Large Scale Simulation Support
 -   Currently tested to simulate 65,536 neurosynaptic cores
 -   Further scale-ups very feasible
 
 
-### NeMo – An Open Source Neuromorphic Hardware Simulation Model
+### NeMo
 #### Potential for new spiking neuron models
 -   Will support other Spiking Neural Network models in the future
 -   Validated using IBM’s TrueNorth Model

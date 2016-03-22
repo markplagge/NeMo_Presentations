@@ -59,7 +59,7 @@ Neuromorphic computing is "Non von Neumann"
 
 
 
-# Designing the Next Generation Supercomputers
+## Designing the Next Generation Supercomputers
 
 
 ### Simulation of New Technologies
@@ -68,11 +68,9 @@ Neuromorphic computing is "Non von Neumann"
 
 
 ### Neuromorphic Hardware Simulation
--   Should Allow for Chip Simulation
-#### Needs to simulate
--   Current hardware design
--   Future and theoretical hardware
-
+-   Should Allow for Chip Simulation with:
+	-   Current hardware design
+	-   Future and theoretical hardware
 
 
 

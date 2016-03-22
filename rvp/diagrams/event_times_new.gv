@@ -1,0 +1,62 @@
+/* Created with the Wolfram Language : www.wolfram.com */
+
+digraph{
+  {rank=same; "N\n 1", "N\n 2","N\n 0"}
+
+    splines="lines"
+  subgraph axons {
+    splines="lines"
+    rankdir=AB
+	"Ax\n  0" [label=<Ax<SUB>0</SUB>> shape="diamond"];
+	"Ax\n  1" [label=<Ax<SUB>1</SUB>>shape="diamond"];
+	"Ax\n  2" [label=<Ax<SUB>2</SUB>> shape="diamond"];
+  }
+	subgraph synapses {
+	  splines="lines"
+	"S\n 0,0" [label=<S<SUB>0,0</SUB>>];
+	"S\n 0,1" [label=<S<SUB>0,1</SUB>>];
+	"S\n 0,2" [label=<S<SUB>0,2</SUB>>];
+	
+	"S\n 1,0" [label=<S<SUB>1,0</SUB>>];
+	"S\n 1,1" [label=<S<SUB>1,1</SUB>>];
+	"S\n 1,2" [label=<S<SUB>1,2</SUB>>];
+
+	"S\n 2,0" [label=<S<SUB>2,0</SUB>>];
+	"S\n 2,1" [label=<S<SUB>2,1</SUB>>];
+	"S\n 2,2" [label=<S<SUB>2,2</SUB>>];
+	}
+	subgraph neurons{
+	  splines="lines"
+	  splines="lines"
+	  rankdir=TB
+	  k=0
+		"N\n 0" [label=<N<SUB>0</SUB>>  shape="triangle"];
+	"N\n 1" [label=<N<SUB>1</SUB>> shape="triangle"];
+	"N\n 2" [label=<N<SUB>2</SUB>>  shape="triangle"];
+
+}
+	"Ax\n  1" -> "S\n 1,0" [style=dotted];
+	"S\n 1,0" -> "S\n 1,1" [style=dotted];
+	"S\n 1,1" -> "S\n 1,2" [style=dotted];
+	"Ax\n  2" -> "S\n 2,0" [style=dotted];
+	"S\n 2,0" -> "S\n 2,1" [style=dotted];
+	"S\n 2,1" -> "S\n 2,2" [style=dotted];
+	
+	"S\n 1,0" -> "N\n 0" [style=dotted];
+	"S\n 1,1" -> "N\n 1" [style=dotted];
+	"S\n 1,2" -> "N\n 2" [style=dotted];
+	"S\n 2,0" -> "N\n 0" [style=dotted];
+	"S\n 2,1" -> "N\n 1" [style=dotted];
+	"S\n 2,2" -> "N\n 2" [style=dotted];
+	
+	
+	"S\n 0,0" -> "N\n 0" [ color="red"];
+	"S\n 0,1" -> "N\n 1" [ color="red"];
+	"S\n 0,2" -> "N\n 2" [ color="red"];
+	
+	"Ax\n  0" -> "S\n 0,0" [color="red"];
+	"S\n 0,0" -> "S\n 0,1" [color="red"];
+	"S\n 0,1" -> "S\n 0,2" [color="red"];
+
+	
+}

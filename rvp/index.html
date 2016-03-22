@@ -133,6 +133,27 @@
                     </section>
                     <section>
                     <img src="./nemo_flow/heartbeat2.png" width="50%">
+                        <P>Neurons then:</P>
+                        <ul>
+                            <li>Retreive current time</li>
+                            <li>Calculate the number of ticks since last activating</li>
+                            <li>Store this as $t_d$ </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <img src="./nemo_flow/heartbeat3.png" width="50%">
+                        <p>Leak calculation:</p>
+                         <pre><code data-trim data-noescape>
+while (td > 0) {
+    voltage = voltage - leakFunction();
+    td --;
+}
+                   
+    </code></pre>
+                        
+                    </section>
+                    <section>
+                        <img src="./nemo_flow/heartbeat4.png" width="80%">
                     </section>
                 </section>
                 <section>NeMo Features</section>

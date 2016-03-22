@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<link rel="stylesheet" href="css/theme/serif.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -60,17 +60,13 @@
                         IBM added 3 new leak modes:
                         
 
-<table class="tg">
-  <tr>
-    <th class="tg-031e"> <img src="./graphs/mon_down.svg" ><br>Negative</th>
-    <th class="tg-031e"><img src="./graphs/diverg.svg" ><br>Divergent</th>
-    <th class="tg-yw4l"><img src="./graphs/converg.svg" ><br>Convergent    </th>
-  </tr> 
-</table>
-                    
-    
-       
-                        
+                    <table class="tg">
+                      <tr>
+                        <th class="tg-031e"> <img src="./graphs/mon_down.svg" ><br>Negative</th>
+                        <th class="tg-031e"><img src="./graphs/diverg.svg" ><br>Divergent</th>
+                        <th class="tg-yw4l"><img src="./graphs/converg.svg" ><br>Convergent    </th>
+                      </tr> 
+                    </table>
                     </section>
                     <section>
                     
@@ -78,20 +74,67 @@
                         Leak modes allow for greater flexibility over LIF model<p>
                         Able to reproduce Izhikevich's biologically important neuron models<p>
                     </section>
+                    <section>
+                    <h3>For those interested</h3> 
+                        Full IBM TrueNorth neuron formula and description available as handout<p>
+                    Also avalaible at <p>
+                    </section>
                 </section>
                 
                 
                 <section><h2>NeMo Implementation</h2>
-                <h3> Event Flow &amp; Processing
+                 Event Flow &amp; Processing
+                    <section data-markdown="./markdowns/nemo_features.md">
+
+                    </section>
                 	<section>
-                		<video class="stretch" data-autoplay  src="./animations/NeMoFlowDiagramAnimated.mp4" ></video>
+                		<video data-autoplay  src="./animations/NeMoFlowDiagramAnimated.mp4" ></video>
                 		
                 	</section>
                     <section>
-                        Synapse Message Part 1
-                        <img src="../nemo_flow/synapse1.png">
+                        
+                        <img class="fill" src="./nemo_flow/synapse1.png" width="50%">
+                        <p>Synapse Message Part 1</p>
+                        <ul>
+                        <li>Synapses send event messages to the neuron</li>
+                            <li> Neurons integrate the synapse weight at this point</li>
+                            <li>Previous voltage is saved in message</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <img  src="./nemo_flow/synapse2.png" width="35%" >
+                        
+                    <p>Synapse Message Part 2</p>
+                        <ul>
+                        <li>Neurons check to see if a "heartbeat" message has been sent</li>
+                            <li>They then send a heartbeat message to themselves scheduled before the next hardware tick</li>
+                        </ul>
+                    </section>
+                    <section>
+                    <img src="./nemo_flow/heartbeat1.png" width="50%">
+                        <p>Heartbeat Message Recevied</p>
+                        <p>Neurons receiving a heartbeat message have either:</p>
+                        <aside class="notes">
+                        When first receiving a heartbeat message - neurons need to run the rest of the IBM algorithm
+                        </aside>
+                        <ul>
+                        <li>Had synaptic activity this tick</li>
+                            <li>Have the potential to be self-firing</li>
+                            <ul>
+                            <li>Positive leak</li>
+                                <li>Negative leak with specific reset values</li>
+                                <li>And More!</li>
+                            </ul>
+                        <li>
+                            Neurons save current membrane potential in the message
+                            </li>
+                        </ul>
+                        
+                    </section>
+                    <section>
+                    <img src="./nemo_flow/heartbeat2.png" width="50%">
+                    </section>
                 </section>
-
                 <section>NeMo Features</section>
                 <section>NeMo Experemental Results</section>
                 <section>Future Work</section>

@@ -28,6 +28,18 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+        <style>
+            img.fleft {
+                float: left;
+                overflow: auto;
+
+            }
+            img.fright {
+                float: right;
+                overflow: auto;
+
+            }
+        </style>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -142,51 +154,59 @@
 
                     </section>
                 	<section>
-                		<video data-autoplay  src="./animations/NeMoFlowDiagramAnimated.mp4" ></video>
+                		<video data-autoplay width="45%" src="./animations/NeMoFlowDiagramAnimated.mp4" ></video>
                 		
                 	</section>
                     <section>
                         
-                        <img class="fill" src="./nemo_flow/synapse1.png" width="50%">
-                        <p>Synapse Message Part 1</p>
+                        
+                        
+                        
+                        <br>
+                        <br>
                         <ul>
                         <li>Synapses send event messages to the neuron</li>
                             <li> Neurons integrate the synapse weight at this point</li>
                             <li>Previous voltage is saved in message</li>
                         </ul>
+                        <img class="fleft" src="./nemo_flow/synapse1.png"  width=30%>
                     </section>
                     <section>
-                        <img  src="./nemo_flow/synapse2.png" width="35%" >
                         
-                    <p>Synapse Message Part 2</p>
+                        <img  src="./nemo_flow/synapse2.png"  class="fleft" width=25%>
+                        <br><br>
+                        <p>Synapse Message Part 2</p>
+                    
                         <ul>
                         <li>Neurons check to see if a "heartbeat" message has been sent</li>
-                            <li>They then send a heartbeat message to themselves scheduled before the next hardware tick</li>
+                            <li>Send heartbeat message if one has not been sent</li>
                         </ul>
                     </section>
                     <section>
+                        <br>
                     <img src="./nemo_flow/heartbeat1.png" width="50%">
-                        <p>Heartbeat Message Recevied</p>
+                        <h3>Heartbeat Message Recevied</h3>
                         <p>Neurons receiving a heartbeat message have either:</p>
                         <aside class="notes">
                         When first receiving a heartbeat message - neurons need to run the rest of the IBM algorithm
                         </aside>
                         <ul>
-                        <li>Had synaptic activity this tick</li>
-                            <li>Have the potential to be self-firing</li>
+                        <li  class="fragment highlight-red">Had synaptic activity this tick</li>
+                            <li  class="fragment highlight-red">Have the potential to be self-firing</li>
                             <ul>
-                            <li>Positive leak</li>
-                                <li>Negative leak with specific reset values</li>
-                                <li>And More!</li>
+                            <li class="fragment">Positive leak</li>
+                                <li class="fragment">Negative leak with specific reset values</li>
+                                <li class="fragment">And More!</li>
                             </ul>
-                        <li>
+                        <li class="fragment highlight-red">
                             Neurons save current membrane potential in the message
                             </li>
                         </ul>
                         
                     </section>
                     <section>
-                    <img src="./nemo_flow/heartbeat2.png" width="50%">
+                        <br>
+                    <img src="./nemo_flow/heartbeat2.png" width="40%">
                         <P>Neurons then:</P>
                         <ul>
                             <li>Retreive current time</li>
@@ -195,6 +215,7 @@
                         </ul>
                     </section>
                     <section>
+                        <br><br>
                         <img src="./nemo_flow/heartbeat3.png" width="50%">
                         <p>Leak calculation:</p>
                          <pre><code data-trim data-noescape>
@@ -207,15 +228,31 @@ while (td > 0) {
                         
                     </section>
                     <section>
-                        <img src="./nemo_flow/heartbeat4.png" width="80%">
-                        <p>Fire and Reset</p>
+                        <br>
+                        <h3>Threshold, reset &amp; fire</h3>
+                        <img src="./nemo_flow/heartbeat4.png" width="40%"><br>
+                        
                         <ul>
-                        <li>Check current voltage, $v_j$ against threshold</li>
-                            <li>If voltage is high, send a  spike mesage to axon</li>
-                            <li>Run reset or negative threshold checks.</li>
+                        <li>Check if voltage $V_j$ is $>$ than threshold</li>
+                            <li>Send fire message</li>
+                            <li>Reset or check negative threshold</li>
                         </ul>
                     </section>
+                    
                 </section>
+                
+                <section>
+                    <h2>Nemo Event Flow</h2>
+                    <img src="./diagrams/time.png" width="30%" class="fright">
+                    <p>Given an event at $Ax_0$(axon 0)</p>
+
+                                            <ul>
+                                                <li>Synapse $S_{0,0}$ through $S_{0,2}$ activate</li>
+                                                <li>All neurons integrate</li>
+                    </ul>
+
+                    </section>
+                
                 <section><h2><i>More</i> NeMo Features</h2>
                 <section>NeMo is built on ROSS!
                     <p>This allows for large hardware simulations!</p>
@@ -234,13 +271,27 @@ while (td > 0) {
                     </section>
                 </section>
                 
-                <section>NeMo Experemental Results</section>
+                <section><h2>NeMo Experemental Results</h2>
+                     <section data-markdown>
+                         <script type="text/template">
+                         
+                         </script>
+                    </section>
+                </section>
                 <section>Future Work</section>
                 
             </div>
             
 
-		</div>
+		
+        
+        
+        
+        
+        
+        
+        <!-- End of presentation !-->
+        </div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
@@ -272,9 +323,9 @@ while (td > 0) {
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true },
                     
-                    { src: 'plugin/math-katex/math-katex.js', async: true},
+                    
                     { src: 'plugin/math/math.js', async:true},
-                    { src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize('scroll'); toc_progress.create(); } }
+                    //{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize('scroll'); toc_progress.create(); } }
 				]
 			});
 

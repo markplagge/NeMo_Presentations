@@ -35,7 +35,7 @@ Neuromorphic computing is "Non von Neumann"
 ### Exascale Computing
 -   Accelerator cards are becoming increasingly important
 -   GPU, Intel PHI
--   Why Not neuromorphic hardware?
+-   Why not neuromorphic hardware?
        - Low Power
        - Excellent Machine Learning
 

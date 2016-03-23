@@ -1,0 +1,21 @@
+\begin{table}[t!]
+\centering
+\caption{Breakdown of time spent during the simulation of 65,536 neurosynaptic
+cores on 1024 Blue Gene/Q nodes each with 64 MPI ranks.}
+\label{table:time}
+\qquad
+\begin{tabular}{|l|r|r|}
+\hline
+                     & Time Taken & \\
+Clock Cycle Category & (seconds)  	& Percentage \\ \hline
+Priority Queue (enq/deq) 			& 1.8825 & 	    0.86\% \\ \hline
+AVL Tree (insert/delete) 			& 0.0192  &  	0.01\% \\ \hline
+Event Processing         			& 38.2921 & 	17.52\% \\ \hline
+Event Cancel             			& 0.7486  &  	0.34\% \\ \hline
+%Event Abort             &  0.00000  &  0.00\% \\ \hline % only show non-zero lines
+GVT                      			&  154.6155  &  70.75\% \\ \hline
+Fossil Collect           			&   12.7742  &  5.85\% \\ \hline
+Primary Rollbacks        			&    5.1278  &  2.35\% \\ \hline
+Network Read             			&    5.0715  &  2.32\% \\ \hline
+\end{tabular}
+\end{table}

@@ -1,21 +1,3 @@
-# NeMo
-#### A Parallel Discrete Event Neuromorphic Hardware Simulation Model
-
-
-
-## Overview
-- Neuromorphic Hardware
-- Neuromorphic Algorithms
-- Demand & Potential
-- Contributions of NeMo
-- Features of NeMo
-- Model Validation
-- Experimental Results
-- Comparison with IBM COMPASS
-- Future Work
-
-
-
 ## Neuromorphic Hardware
 ### Specialized Processing
 
@@ -53,9 +35,9 @@ Neuromorphic computing is "Non von Neumann"
 ### Exascale Computing
 -   Accelerator cards are becoming increasingly important
 -   GPU, Intel PHI
--   Why Not Neuromorphic hardware?
-        Low Power
-        Excellent Machine Learning
+-   Why Not neuromorphic hardware?
+       - Low Power
+       - Excellent Machine Learning
 
 
 

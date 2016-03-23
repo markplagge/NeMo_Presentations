@@ -40,7 +40,61 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				                	<section data-markdown="slides_outline.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section data-markdown>
+                    <script type="text/template">
+                        # NeMo
+                        #### A Parallel Discrete Event Neuromorphic Hardware Simulation Model
+                    </script>
+                </section>
+                    <section data-markdown>
+                    <script type="text/template">
+                ## Overview
+                - A Brief Overview of PDES
+                - Neuromorphic Hardware
+                - Neuromorphic Algorithms
+                - Demand & Potential
+                - Contributions of NeMo
+                - Features of NeMo
+                - Model Validation
+                - Experimental Results
+                - Comparison with IBM COMPASS
+                - Future Work
+                    </script>
+                </section>
+                <section>
+                <h2>A Brief Overview of PDES</h2>
+                    <section>
+                    <h3>Parallel Discrete Event Simulation</h3>
+                    <ul>
+                    <li>Provides a fast way to simulate large systems</li>
+                        <li>Uses event based processing</li>
+                        <li>Computation only occurs when a process receives an event</li>
+                    </ul>
+                        </section>
+                    <section>
+                        <h3>Key Terms</h3>
+                        <p><b>LP:</b> Logical Process - A simulated item. Can be an airport, a cell phone tower, etc...</p>
+                        <p><b>PE:</b> Physical Process - A running process in the simulation.<br> Can contain one or more running <b>LPs</b></p>
+                        <p><b>Event:</b> A communication between running LPs. Events drive the simulation.</p>
+                        
+                    </section>
+                    <section>
+                    <video width="75%" autoplay>
+                        <source src="./animations/PDES_animated.mp4" type="video/mp4">
+                        </video>
+                    </section>
+                    <section>
+                    <h3>TimeWarp Algorithm</h3>
+                        <ul>
+                        <li>With TimeWarp all PEs process events as fast as they can</li>
+                            <li>If an event is received in the past, events are "rolled back": <br> 
+                            Events are undone until received event is in the proper order.</li>
+                        </ul>
+                    </section>
+
+                </section>              
+                
+				<section data-markdown="slides_outline.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
                 <section>
                     <h2>IBM TrueNorth Neuron</h2>
                     <section>
@@ -154,9 +208,32 @@ while (td > 0) {
                     </section>
                     <section>
                         <img src="./nemo_flow/heartbeat4.png" width="80%">
+                        <p>Fire and Reset</p>
+                        <ul>
+                        <li>Check current voltage, $v_j$ against threshold</li>
+                            <li>If voltage is high, send a  spike mesage to axon</li>
+                            <li>Run reset or negative threshold checks.</li>
+                        </ul>
                     </section>
                 </section>
-                <section>NeMo Features</section>
+                <section><h2><i>More</i> NeMo Features</h2>
+                <section>NeMo is built on ROSS!
+                    <p>This allows for large hardware simulations!</p>
+                    <p>Further integration with existing supercomputer simulation models</p>
+                    </section>
+                    <section>
+                        <p>Nemo will have support for JSON neuron models</p>
+                        <p>Input support through Python</p>
+                    </section>
+                    <section>
+                        With Pythonic descriptors of models<p>
+                        NeMo will gain flexibility
+                    </section>
+                    <section>
+                    Comming soon to a simulator near you! 
+                    </section>
+                </section>
+                
                 <section>NeMo Experemental Results</section>
                 <section>Future Work</section>
                 
@@ -175,14 +252,15 @@ while (td > 0) {
 			Reveal.initialize({
 				controls: true,
 				progress: true,
-				history: true,
+                history: true,
+				previewLinks: true,
 				center: true,
                 width:"100%",
                 height:"100%",
                 margin: 0.05,
                 minScale:0.1,
                 maxScale:2,
-
+                
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins

@@ -63,13 +63,13 @@
                 ## Overview
                 - A Brief Overview of PDES
                 - Neuromorphic Hardware
-                - Neuromorphic Models
+                - Neuromorphic Algorithms
                 - Demand & Potential
                 - Contributions of NeMo
                 - Features of NeMo
-
+                - Model Validation
                 - Experimental Results
-              
+                - Comparison with IBM COMPASS
                 - Future Work
                     </script>
                 </section>
@@ -88,7 +88,7 @@
                         <p><b>LP:</b> Logical Process - A simulated item. Can be an airport, a cell phone tower, etc...</p>
                         <p><b>PE:</b> Physical Process - A running process in the simulation.<br> Can contain one or more running <b>LPs</b></p>
                         <p><b>Event:</b> A communication between running LPs. Events drive the simulation.</p>
-
+                        
                     </section>
                     <section>
                     <video width="75%" autoplay>
@@ -99,13 +99,13 @@
                     <h3>TimeWarp Algorithm</h3>
                         <ul>
                         <li>With TimeWarp all PEs process events as fast as they can</li>
-                            <li>If an event is received in the past, events are "rolled back": <br>
+                            <li>If an event is received in the past, events are "rolled back": <br> 
                             Events are undone until received event is in the proper order.</li>
                         </ul>
                     </section>
 
-                </section>
-
+                </section>              
+                
 				<section data-markdown="slides_outline.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
                 <section>
                     <h2>IBM TrueNorth Neuron</h2>
@@ -117,37 +117,37 @@
                             <ul>
                                 <li>Enables probabilistic leak and synapse integration</li>
                                 <li>Enhanced integration allows for conversion of Caffe models</li>
-                            </ul>
+                            </ul>                            
                         </ul>
-
+                        
                     </section>
                     <section>
                     <h3>Neuron Implementation</h3>
                         IBM added 3 new leak modes:
-
+                        
 
                     <table class="tg">
                       <tr>
                         <th class="tg-031e"> <img src="./graphs/mon_down.svg" ><br>Negative</th>
                         <th class="tg-031e"><img src="./graphs/diverg.svg" ><br>Divergent</th>
                         <th class="tg-yw4l"><img src="./graphs/converg.svg" ><br>Convergent    </th>
-                      </tr>
+                      </tr> 
                     </table>
                     </section>
                     <section>
-
+                    
                         Stochastic integration allows for probabilistic features<p>
                         Leak modes allow for greater flexibility over LIF model<p>
                         Able to reproduce Izhikevich's biologically important neuron models<p>
                     </section>
                     <section>
-                    <h3>For those interested</h3>
+                    <h3>For those interested</h3> 
                         Full IBM TrueNorth neuron formula and description available as handout<p>
                     Also avalaible at <p>
                     </section>
                 </section>
-
-
+                
+                
                 <section><h2>NeMo Implementation</h2>
                  Event Flow &amp; Processing
                     <section data-markdown="./markdowns/nemo_features.md">
@@ -155,13 +155,13 @@
                     </section>
                 	<section>
                 		<video data-autoplay width="45%" src="./animations/NeMoFlowDiagramAnimated.mp4" ></video>
-
+                		
                 	</section>
                     <section>
-
-
-
-
+                        
+                        
+                        
+                        
                         <br>
                         <br>
                         <ul>
@@ -172,11 +172,11 @@
                         <img class="fleft" src="./nemo_flow/synapse1.png"  width=30%>
                     </section>
                     <section>
-
+                        
                         <img  src="./nemo_flow/synapse2.png"  class="fleft" width=25%>
                         <br><br>
                         <p>Synapse Message Part 2</p>
-
+                    
                         <ul>
                         <li>Neurons check to see if a "heartbeat" message has been sent</li>
                             <li>Send heartbeat message if one has not been sent</li>
@@ -202,7 +202,7 @@
                             Neurons save current membrane potential in the message
                             </li>
                         </ul>
-
+                        
                     </section>
                     <section>
                         <br>
@@ -223,24 +223,24 @@ while (td > 0) {
     voltage = voltage - leakFunction();
     td --;
 }
-
+                   
     </code></pre>
-
+                        
                     </section>
                     <section>
                         <br>
                         <h3>Threshold, reset &amp; fire</h3>
                         <img src="./nemo_flow/heartbeat4.png" width="40%"><br>
-
+                        
                         <ul>
                         <li>Check if voltage $V_j$ is $>$ than threshold</li>
                             <li>Send fire message</li>
                             <li>Reset or check negative threshold</li>
                         </ul>
                     </section>
-
+                    
                 </section>
-
+                
                 <section>
                     <h2>Nemo Event Flow</h2>
                     <img src="./diagrams/time.png" width="30%" class="fright">
@@ -252,7 +252,7 @@ while (td > 0) {
                     </ul>
 
                     </section>
-
+                
                 <section><h2><i>More</i> NeMo Features</h2>
                 <section>NeMo is built on ROSS!
                     <p>This allows for large hardware simulations!</p>
@@ -267,10 +267,10 @@ while (td > 0) {
                         NeMo will gain flexibility
                     </section>
                     <section>
-                    Comming soon to a simulator near you!
+                    Comming soon to a simulator near you! 
                     </section>
                 </section>
-
+                
                 <section><h3>NeMo Experemental Results</h3>
                     <section data-markdown="./markdowns/weakscaling.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n">
 
@@ -286,17 +286,17 @@ while (td > 0) {
                         <li class="fragment">Pythonic I/O for integration with spiking neural network tools</li>
                     </ul>
                 </section>
-
+                
             </div>
+            
 
-
-
-
-
-
-
-
-
+		
+        
+        
+        
+        
+        
+        
         <!-- End of presentation !-->
         </div>
 
@@ -318,7 +318,7 @@ while (td > 0) {
                 margin: 0.05,
                 minScale:0.1,
                 maxScale:2,
-
+                
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
@@ -329,8 +329,8 @@ while (td > 0) {
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true },
-
-
+                    
+                    
                     { src: 'plugin/math/math.js', async:true},
                     //{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize('scroll'); toc_progress.create(); } }
 				]

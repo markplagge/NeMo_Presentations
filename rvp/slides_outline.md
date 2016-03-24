@@ -4,6 +4,8 @@
 - Uses Artificial Neural Network concepts
 - Excellent for finding patters in data
 - Great data analysis capability
+Note:
+I'm not going to go into too much detail here as Noah discussed this in more detail last meeting.
 
 
 ## Neuromorphic Hardware

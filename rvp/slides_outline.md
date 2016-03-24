@@ -48,6 +48,10 @@ Neuromorphic computing is "Non von Neumann"
 -   Allows testing of hardware configurations
 -   Enables rapid prototyping of systems
 
+### CODES
+-		Based on ROSS
+-		Enables simulation of new supercomputer designs
+
 
 ### Neuromorphic Hardware Simulation
 -   Should Allow for Chip Simulation
@@ -98,14 +102,24 @@ Neuromorphic computing is "Non von Neumann"
 
 ### Basics
 -	Based on Artificial Neural Network (ANN) concept
-- 	Developed to simulate biological functions - not for machine learning
--	Recently, neuromorphic computing has been shown to be viable for computing
+-	Third generation neuron simulation
+- Developed to simulate biological functions - not for machine learning
+- Neuromorphic computing has been shown to be viable for computing
+
+### Comparison with MLP
+- Include concept of time
+- Neurons do not need to fire at every timestep, $t$
+- Activation level is increased with spikes
+
+## Introductions
+-	First scientific model developed in 1952 by Hodgkin and Huxley
 
 
 ### Current Hardware
 - Current hardware uses "spiking neurons"
 	- Neurons output a 1 or 0
 	- Integration is generally simple (no sigmoid functions yet)
+	- Significant research is underway
 
 
 ### Leaky integrate-and-fire:

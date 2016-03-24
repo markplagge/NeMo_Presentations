@@ -23,7 +23,7 @@ Neuromorphic computing is "Non von Neumann"
 ## Demand and Potential
 #### Exascale Computing
 -	Transitioning to “Fat Nodes”
--	Titan – Revealed in 2013 has 18,688 CPUs and 18,688 GPUS        
+-	Titan – Revealed in 2013 has 18,688 CPUs and 18,688 GPUs        
     Uses 8.2 MW of Power! 
 -   Tianhe-2 has 32,000 CPUs with accelerators
     

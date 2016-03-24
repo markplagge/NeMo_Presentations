@@ -24,9 +24,9 @@ Neuromorphic computing is "Non von Neumann"
 #### Exascale Computing
 -	Transitioning to “Fat Nodes”
 -	Titan – Revealed in 2013 has 18,688 CPUs and 18,688 GPUs        
-    Uses 8.2 MW of Power! 
+    Uses 8.2 MW of Power!
 -   Tianhe-2 has 32,000 CPUs with accelerators
-    
+
     Uses 24 MW of Power!  
 #### Nasa vision report suggests in 2030:
 -   New systems with have only 20,000 compute nodes
@@ -41,7 +41,7 @@ Neuromorphic computing is "Non von Neumann"
 
 
 
-# Designing the Next Generation Supercomputers
+## Designing the Next Generation Supercomputers
 
 
 ### Simulation of New Technologies
@@ -104,14 +104,14 @@ Neuromorphic computing is "Non von Neumann"
 
 ### Current Hardware
 - Current hardware uses "spiking neurons"
-	- Neurons output a 1 or 0 
+	- Neurons output a 1 or 0
 	- Integration is generally simple (no sigmoid functions yet)
 
 
-### Leaky integrate-and-fire: 
+### Leaky integrate-and-fire:
 $$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \left[ x_i(t) \, s_i \right]$$
 
-- Takes the sum of all of the input synapses. 
+- Takes the sum of all of the input synapses.
 	- $x$ is the on/off state of the synapse
 	- $s_i$ is the synapse weight
 	- $V_j(t)$ is the neuron voltage at time $t$

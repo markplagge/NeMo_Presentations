@@ -8,6 +8,7 @@ Note:
 I'm not going to go into too much detail here as Noah discussed this in more detail last meeting.
 Neuromorphic hardware allows for specialized data classification and analysis.
 
+
 ## Neuromorphic Hardware
 ### Low Power
 
@@ -18,6 +19,7 @@ Note:
 The interesting thing about this hardware, to our research group, is the
 power usage. This is a tiny amount of power usage.
 As designs improve - perhaps we will have neuromorphic hardware in smartphones!
+
 
 ## Neuromorphic Hardware
 ### New Algorithms
@@ -31,6 +33,7 @@ We probably won't be seeing a GCC compiler for TrueNorth for a while
 IBM has provided a couple of programming tools:
 TEA and corelets.
 
+
 ## Demand and Potential
 #### Exascale Computing
 -	Transitioning to “Fat Nodes”
@@ -40,21 +43,24 @@ TEA and corelets.
 	- 10 petaflops
 - Tianhe-2 has 32,000 CPUs with accelerators
 	- 33.86 petaflops
-	- Uses 24 MW of Power! 
+	- Uses 24 MW of Power!
 #### NASA vision report suggests in 2030:
 -   New systems with have only 20,000 compute nodes
 Note:
 As new supercomputer demands are met, the power requirements have gone up.
 The NASA report suggests that by 2030 new supercomputers will only have about 20,000 compute nodes
-How will we achieve Exascale performance with fewer nodes?
+How will we achieve exascale performance with fewer nodes?
+
 
 ### Exascale Computing
 -   Accelerator cards are becoming increasingly important
 -   GPU, Intel PHI
--   Why not neuromorphic hardware?
-       - Low Power
-       - Excellent Machine Learning
-
+-   Why not neuromorphic hardware?  <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="1" -->
+       - Low Power  <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="1" -->
+       - Excellent Machine Learning  <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="1" -->
+Note:
+Supercomputers will have to make use of more dedicated acceleration technology
+So - why not neuromorphic hardware as well?
 
 
 ## Designing the Next Generation Supercomputers

@@ -6,7 +6,7 @@
 - Great data analysis capability
 Note:
 I'm not going to go into too much detail here as Noah discussed this in more detail last meeting.
-
+Neuromorphic hardware allows for specialized data classification and analysis.
 
 ## Neuromorphic Hardware
 ### Low Power
@@ -14,6 +14,10 @@ I'm not going to go into too much detail here as Noah discussed this in more det
 - IBM TrueNorth processor uses 65 mW
 	*(That's Milliwatts!)*
 
+Note:
+The interesting thing about this hardware, to our research group, is the
+power usage. This is a tiny amount of power usage.
+As designs improve - perhaps we will have neuromorphic hardware in smartphones!
 
 ## Neuromorphic Hardware
 ### New Algorithms
@@ -21,18 +25,28 @@ Neuromorphic computing is "Non von Neumann"
 - Does not operate using traditional algorithms
 - New programming paradigms needed for adoption
 
+Note:
+Programming the hardware is tricky.
+We probably won't be seeing a GCC compiler for TrueNorth for a while
+IBM has provided a couple of programming tools:
+TEA and corelets.
 
 ## Demand and Potential
 #### Exascale Computing
 -	Transitioning to “Fat Nodes”
--	Titan – Revealed in 2013 has 18,688 CPUs and 18,688 GPUs        
-    Uses 8.2 MW of Power!
--   Tianhe-2 has 32,000 CPUs with accelerators
-
-    Uses 24 MW of Power!  
-#### Nasa vision report suggests in 2030:
+-	Titan
+	- Released in 2013 has 18,688 CPUs and 18,688 GPUs        
+  - Uses 8.2 MW of Power
+	- 10 petaflops
+- Tianhe-2 has 32,000 CPUs with accelerators
+	- 33.86 petaflops
+	- Uses 24 MW of Power! 
+#### NASA vision report suggests in 2030:
 -   New systems with have only 20,000 compute nodes
-
+Note:
+As new supercomputer demands are met, the power requirements have gone up.
+The NASA report suggests that by 2030 new supercomputers will only have about 20,000 compute nodes
+How will we achieve Exascale performance with fewer nodes?
 
 ### Exascale Computing
 -   Accelerator cards are becoming increasingly important

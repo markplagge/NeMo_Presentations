@@ -128,10 +128,12 @@ So - why not neuromorphic hardware as well?
 - Developed to simulate biological functions - not for machine learning
 - Neuromorphic computing has been shown to be viable for computing
 
+
 ### Comparison with MLP
 - Include concept of time
 - Neurons do not need to fire at every timestep, $t$
 - Activation level is increased with spikes
+
 
 ## Introductions
 -	First scientific model developed in 1952 by Hodgkin and Huxley

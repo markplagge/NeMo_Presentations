@@ -70,6 +70,7 @@ So - why not neuromorphic hardware as well?
 -   Allows testing of hardware configurations
 -   Enables rapid prototyping of systems
 
+
 ### CODES
 -		Based on ROSS
 -		Enables simulation of new supercomputer designs

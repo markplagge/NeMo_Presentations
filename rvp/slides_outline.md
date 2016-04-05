@@ -167,3 +167,9 @@ http://lis2.epfl.ch/CompletedResearchProjects/EvolutionOfAdaptiveSpikingCircuits
 	- Integrate and fire
 	- Leaky integrate and fire
 	- Many more...
+
+
+## Naming Conventions
+Spiking neural networks use bio inspired terms
+<img src="./tn_slides/1_naming.png" width="75%" class="stretch">
+

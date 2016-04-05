@@ -123,6 +123,7 @@
 				<section data-markdown="slides_outline.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
                 <section data-markdown="./markdowns/hardware_lif.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
                 <section data-markdown="./markdowns/lif.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                
                 <section>
                     <h2>IBM TrueNorth Neuron</h2>
                     <section>
@@ -163,11 +164,43 @@
                     
                     </section>
                     <section data-markdown="./markdowns/tn_prog_th.md">
-
                     </section>
+                    
                 </section>
+                <!-- %%%%%%%%%%%%True North Hardware Quickie -->
+                <section><h3>IBM TrueNorth Hardware Layout</h3>
+                <section></section>
+                <section>
+                    TrueNorth is a neurosynaptic processor
+                    <ul>
+                    <li>Developed through DARPA project</li>
+                        <li>Designed as a low power dedicated processor</li>
+                    </ul>
+                </section>
+                <section data-markdown="./markdowns/tn_layout.md"></section>
+                <section>
+                <h3>Input Axons</h3>
+                    Input axons are arranged in a connected grid
+                    <img src="./tn_slides/axon_grid.png" width="50%">
+                </section>
+                <section>
+                   <br>
+                    Synapses exist as a logical connection between axons and nurons.
+                    <p>There are $256^2$ synapses per core</p>
+                    <img src="./tn_slides/synapses.png" width="40%">
+                    
+                    
+                    </section>
+                <section>
+                    
+                    <img src="./tn_slides/one_neuron_one_axon.png" width="60%">
+                    <p>One neuron connects to one axon</p>
+                    <p>One axon connects to all neurons in a core</p>
+                    </section>
 
-
+                </section>
+                    
+                
                 <section><h2>NeMo Implementation</h2>
                  <!--Event Flow &amp; Processing -->
                     <section data-markdown="./markdowns/nemo_features.md">

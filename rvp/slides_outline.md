@@ -80,9 +80,9 @@ So - why not neuromorphic hardware as well?
 
 
 ### Neuromorphic Hardware Simulation
--   Should Allow for Chip Simulation 
-          
-          
+-   Should Allow for Chip Simulation
+
+
 #### Needs to simulate
 -   Current hardware design
 -   Future and theoretical hardware
@@ -142,7 +142,7 @@ So - why not neuromorphic hardware as well?
 	- Neurons sum inputs and apply output functions
 	- Output is result of this function
 
-<img src="./diagrams/artificial_neural_network.png" width="40%" />
+<img src="./diagrams/artificial_neural_network.png" width="30%" />
 
 
 ## ANNs and MLPs
@@ -174,4 +174,3 @@ http://lis2.epfl.ch/CompletedResearchProjects/EvolutionOfAdaptiveSpikingCircuits
 ## Naming Conventions
 Spiking neural networks use bio inspired terms
 <img src="./tn_slides/1_naming.png" width="75%" class="stretch">
-

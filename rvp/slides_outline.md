@@ -142,7 +142,7 @@ So - why not neuromorphic hardware as well?
 	- Neurons sum inputs and apply output functions
 	- Output is result of this function
 
-<img src="./diagrams/artificial_neural_network.png" width="50%" />
+<img src="./diagrams/artificial_neural_network.png" width="40%" />
 
 
 ## ANNs and MLPs

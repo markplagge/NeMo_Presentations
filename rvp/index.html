@@ -37,8 +37,19 @@
             img.fright {
                 float: right;
                 overflow: auto;
+                
+                
 
             }
+            .reveal .reference_footnote {
+    float:left;
+    border:0; padding:0; margin:0;
+    position:fixed;
+    bottom:0%; right:0%;
+    font-size:40%;
+    text-align: right;
+    line-height:110%;  /* slightly compressed */
+}
         </style>
 
 		<!--[if lt IE 9]>
@@ -110,6 +121,8 @@
                 </section>
 
 				<section data-markdown="slides_outline.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section data-markdown="./markdowns/hardware_lif.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section data-markdown="./markdowns/lif.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
                 <section>
                     <h2>IBM TrueNorth Neuron</h2>
                     <section>
@@ -148,6 +161,9 @@
                         Full IBM TrueNorth neuron formula and description available as handout<p>
                     
                     
+                    </section>
+                    <section data-markdown="./markdowns/tn_prog_th.md">
+
                     </section>
                 </section>
 
@@ -240,6 +256,7 @@ while (td > 0) {
                         <li>Check if voltage $V_j$ is $>$ than threshold</li>
                             <li>Send fire message</li>
                             <li>Reset or check negative threshold</li>
+                            
                         </ul>
                     </section>
 
@@ -314,7 +331,7 @@ while (td > 0) {
 			Reveal.initialize({
 				controls: true,
 				progress: true,
-                history: false,
+                history: true,
 				previewLinks: true,
 				center: true,
                 width:"100%",

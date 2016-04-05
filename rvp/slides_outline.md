@@ -14,7 +14,7 @@ Neuromorphic hardware allows for specialized data classification and analysis.
 
 - IBM TrueNorth processor uses 65 mW
 	*(That's Milliwatts!)*
-
+<center><img src="./tn_slides/single_chip_system.png" width="60%" class="stretch" ></center>
 Note:
 The interesting thing about this hardware, to our research group, is the
 power usage. This is a tiny amount of power usage.
@@ -44,8 +44,9 @@ TEA and corelets.
 - Tianhe-2 has 32,000 CPUs with accelerators
 	- 33.86 petaflops
 	- Uses 24 MW of Power!
-#### NASA vision report suggests in 2030:
--   New systems with have only 20,000 compute nodes
+
+####* NASA vision report suggests in 2030:*
+-   New systems will have only 20,000 compute nodes
 Note:
 As new supercomputer demands are met, the power requirements have gone up.
 The NASA report suggests that by 2030 new supercomputers will only have about 20,000 compute nodes
@@ -77,7 +78,9 @@ So - why not neuromorphic hardware as well?
 
 
 ### Neuromorphic Hardware Simulation
--   Should Allow for Chip Simulation
+-   Should Allow for Chip Simulation 
+          
+          
 #### Needs to simulate
 -   Current hardware design
 -   Future and theoretical hardware
@@ -130,55 +133,37 @@ So - why not neuromorphic hardware as well?
 - Neuromorphic computing has been shown to be viable for computing
 
 
-### Comparison with MLP
+## ANNs and MLPs
+- ANNs (Artificial Neural Network)s are:
+	- Machine Learning Concepts
+	- Inputs are modified by weights
+	- Neurons sum inputs and apply output functions
+	- Output is result of this function
+
+<img src="./diagrams/artificial_neural_network.png" width="50%" />
+
+
+## ANNs and MLPs
+- MLPs (Multi Layer Perceptron)s are:
+	- Multiple layers of perceptron neurons
+	- The basis for many ANN network designs
+	- Hugely popular
+
+
+## Spiking Neurons
 - Include concept of time
-- Neurons do not need to fire at every timestep, $t$
+- Neurons do not need to fire at every time-step, $t$
 - Activation level is increased with spikes
 
+![](./diagrams/spike_network.jpg)<!-- .element: class="stretch" width="50%"-->
 
-## Introductions
+http://lis2.epfl.ch/CompletedResearchProjects/EvolutionOfAdaptiveSpikingCircuits/<!-- .element: class="reference_footnote" -->
+
+
+## A Brief History
 -	First scientific model developed in 1952 by Hodgkin and Huxley
-
-
-### Current Hardware
-- Current hardware uses "spiking neurons"
-	- Neurons output a 1 or 0
-	- Integration is generally simple (no sigmoid functions yet)
-	- Significant research is underway
-
-
-### Leaky integrate-and-fire:
-$$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \left[ x_i(t) \, s_i \right]$$
-
-- Takes the sum of all of the input synapses.
-	- $x$ is the on/off state of the synapse
-	- $s_i$ is the synapse weight
-	- $V_j(t)$ is the neuron voltage at time $t$
-
-
-### Leaky integrate-and-fire
-*Leak and reset for neuron $j$:*
-
-- Leak: <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="1" -->
-$$V_j(t) = V_j(t) - \lambda_j $$
-- Spike & Reset: <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="3" -->
-\begin{align}&\textbf{if}~~V\_j(t) \geq \alpha\_j: \notag \\\\&\qquad \text{Spike}\notag \\\\ &\qquad V\_j(t)= R\_j \notag \\\\ &\textbf{end if} \notag \end{align}
-
-- $\lambda_j$ is the leak value of the neuron.  <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="1" -->
-- $\alpha_j$ is the threshold of the neuron. <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="3" -->
-- $R_j$ is the reset voltage. <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="3" -->
-
-
-### Leaky integrate-and-fire
-The previous formulas combine to form the basic LIF form:
-
-**Integration:**
-$$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \\left[ x\_i(t) \, s\_i \\right]$$
-
-**Leak:**
-\begin{equation}
-        V_j(t) = V_j(t) - \lambda_j   \notag
-\end{equation}
-
-**Threshold check & Fire:**
-\begin{align}&\textbf{if}~~V\_j(t) \geq \alpha\_j: \notag \\\\&\qquad \text{Spike}\notag \\\\ &\qquad V\_j(t)= R\_j \notag \\\\ &\textbf{end if} \notag \end{align}
+- 	Developed further into commonly used models including:
+	- Hodgkin and Huxley model
+	- Integrate and fire
+	- Leaky integrate and fire
+	- Many more...

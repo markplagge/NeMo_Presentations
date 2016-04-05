@@ -25,7 +25,7 @@ $$V_j(t) = V_j(t) - \lambda_j $$
 
 
 ### Leaky integrate-and-fire
-The previous formulas combine to form the basic LIF form:
+The Combined Formula
 
 **Integration:**
 $$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \\left[ x\_i(t) \, s\_i \\right]$$

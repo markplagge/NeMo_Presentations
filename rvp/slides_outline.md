@@ -45,8 +45,10 @@ TEA and corelets.
 	- 33.86 petaflops
 	- Uses 24 MW of Power!
 
-####* NASA vision report suggests in 2030:*
+
+#### NASA vision report suggests in 2030:
 -   New systems will have only 20,000 compute nodes
+-   New systems will *need* accelerator cards
 Note:
 As new supercomputer demands are met, the power requirements have gone up.
 The NASA report suggests that by 2030 new supercomputers will only have about 20,000 compute nodes

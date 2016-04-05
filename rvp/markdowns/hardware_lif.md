@@ -12,4 +12,4 @@
 
 Implementation of an enhanced Leaky Integrate and Fire neuron
 
-<img src="../tn_slides/tn_multichip.png" width="65%">
+<img src="./tn_slides/tn_multichip.jpg" width="65%">

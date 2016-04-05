@@ -1,0 +1,4 @@
+1.	Mount, D. M. ANN Programming Manual. 1–37 (2016).
+2.	Akopyan, F. et al. TrueNorth: Design and Tool Flow of a 65 mW 1 Million Neuron Programmable Neurosynaptic Chip. IEEE Trans. Comput.-Aided Des. Integr. Circuits Syst. 34, 1537–1557 (2015).
+3.	Cassidy, A. S. et al. Real-Time Scalable Cortical Computing at 46 Giga-Synaptic OPS/Watt with ~100&#x00D7; Speedup in Time-to-Solution and ~100,000&#x00D7; Reduction in Energy-to-Solution. in 27–38 (IEEE, 2014). doi:10.1109/SC.2014.8
+4.	Brette, R. et al. Simulation of networks of spiking neurons: A review of tools and strategies. J Comput Neurosci 23, 349–398 (2007).

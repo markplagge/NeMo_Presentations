@@ -40,4 +40,4 @@ $$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \\left[ x\_i(t) \, s\_i \\right]$$
 
 
 ###In Practice
-<img src="../tn_slides/leak.png">
+<img src="./tn_slides/leak.png">

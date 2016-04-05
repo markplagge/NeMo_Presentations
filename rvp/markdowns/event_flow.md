@@ -1,6 +1,6 @@
 #### Overview
 
-![](/Users/mplagge/Documents/NeMo_Presentation/rvp/diagrams/NeMoFlowDiagram.pdf)
+![](./diagrams/NeMoFlowDiagram.pdf)
 
 Event Flow Diagram
 

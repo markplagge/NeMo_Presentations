@@ -10,12 +10,14 @@ Neuromorphic computing is based on spiking neural networks
 
 ## Spiking Neurons
 Unlike a traditional Neural Network Neuron:
-	- Include concept of time 
-		- State changes over a series of time-steps.
-	- Neurons do not need to fire at every time-step $t$
-	- Activation level is increased with input spikes
-![](./diagrams/spike_output.png)<!-- .element: class="stretch" width="50%" -->
-![](./diagrams/spike_network.jpg)<!-- .element: class="stretch" width="50%"-->
+- Include concept of time 
+	- State changes over a series of time-steps.
+- Neurons do not need to fire at every time-step $t$
+- Activation level is increased with input spikes
+![](./diagrams/spike_output.png)
+![](./diagrams/spike_network.jpg)
+
+
 
 ## A Brief History of Spiking Neurons
 - First scientific model developed in 1952 by Hodgkin and Huxley
@@ -27,9 +29,12 @@ Unlike a traditional Neural Network Neuron:
     + Many More
 
 
+
+
 ## Naming Conventions
 Spiking neural networks use bio inspired terms
 <img src="./tn_slides/1_naming.png" width="75%" class="stretch">
+
 
 
 ## Neuromorphic Hardware
@@ -37,6 +42,7 @@ Spiking neural networks use bio inspired terms
 - Does not operate using traditional algorithms
 - Tiny power requirements: <= 60 mW
 <center><img src="./tn_slides/single_chip_system.png" width="60%" class="stretch" ></center>
+
 
 
 ### Current Hardware
@@ -49,11 +55,14 @@ Spiking neural networks use bio inspired terms
 <img src="./images/sigmoid.png" width=30% >
 
 
+
 ### True North Chip
 
 Implementation of an enhanced Leaky Integrate and Fire neuron
 
 <img src="./tn_slides/tn_multichip.jpg" width="65%">
+
+
 
 ##Leaky Integrate-and-Fire
 ## A Basic Spiking Neuron Model

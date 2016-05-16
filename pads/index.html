@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>NeMo - The Neuromorphic Hardware Simulation Model</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+        <style>
+            img.fleft {
+                float: left;
+                overflow: auto;
+
+            }
+            img.fright {
+                float: right;
+                overflow: auto;
+
+
+
+            }
+            .reveal .refs {
+                font-size:"20%"
+
+            }
+            .reveal .reference_footnote {
+    float:left;
+    border:0; padding:0; margin:0;
+    position:fixed;
+    bottom:0%; right:0%;
+    font-size:40%;
+    text-align: right;
+    line-height:110%;  /* slightly compressed */
+}
+        </style>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                <section data-markdown>
+                    <script type="text/template">
+                        # NeMo
+                        #### A Parallel Discrete Event Neuromorphic Hardware Simulation Model
+                    </script>
+                </section>
+                    <section data-markdown>
+                    <script type="text/template">
+## Overview
+- Neuromorphic Hardware
+- Demand and Potential
+- Neuromorphic Software Models
+- Contributions of NeMo
+- Experimental Results
+- Future Work
+                    </script>
+                </section>
+
+
+			     <section data-markdown="./new_slides.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section data-markdown="./markdowns/hardware_lif.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+                <section data-markdown="./markdowns/lif.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+
+                <section>
+                    <h2>IBM TrueNorth Neuron</h2>
+                    <section>
+                    <h3>Neuron Implementation</h3>
+                        <ul>
+                        <li>IBM Enhanced the Leaky Integrate and Fire Neuron</li>
+                            <li>Added stochastic integration:</li>
+                            <ul>
+                                <li>Enables probabilistic leak and synapse integration</li>
+                                <li>Enhanced integration allows for conversion of Caffe models</li>
+                            </ul>
+                        </ul>
+
+                    </section>
+                    <section>
+                    <h3>Neuron Implementation</h3>
+                        IBM added 3 new leak modes:
+
+
+                    <table class="tg">
+                      <tr>
+                        <th class="tg-031e"> <img src="./graphs/mon_down.svg" ><br>Negative</th>
+                        <th class="tg-031e"><img src="./graphs/diverg.svg" ><br>Divergent</th>
+                        <th class="tg-yw4l"><img src="./graphs/converg.svg" ><br>Convergent    </th>
+                      </tr>
+                    </table>
+                    </section>
+                    <section>
+
+                        Stochastic integration allows for probabilistic features<p>
+                        Leak modes allow for greater flexibility over LIF model<p>
+                        Able to reproduce Izhikevich's biologically important neuron models<p>
+                    </section>
+                    <section>
+                    <h3>For those interested</h3>
+                        Full IBM TrueNorth neuron formula and description available as handout<p>
+
+
+                    </section>
+                    <section data-markdown="./markdowns/tn_prog_th.md">
+                    </section>
+
+                </section>
+                <!-- %%%%%%%%%%%%True North Hardware Quickie -->
+                <section><h3>IBM TrueNorth Hardware Layout</h3>
+                <section></section>
+                <section>
+                    TrueNorth is a neurosynaptic processor
+                    <ul>
+                    <li>Developed through DARPA project</li>
+                        <li>Designed as a low power dedicated processor</li>
+                    </ul>
+                </section>
+                <section data-markdown="./markdowns/tn_layout.md"></section>
+                <section>
+                <h3>Input Axons</h3>
+                    Input axons are arranged in a connected grid
+                    <img src="./tn_slides/axon_grid.png" width="50%">
+                </section>
+                <section>
+                   <br>
+                    Synapses exist as a logical connection between axons and neurons.
+                    <p>There are $256^2$ synapses per core</p>
+                    <img src="./tn_slides/synapses.png" width="40%">
+
+
+                    </section>
+                <section>
+
+                    <img src="./tn_slides/one_neuron_one_axon.png" width="60%">
+                    <p>One neuron connects to one axon</p>
+                    <p>One axon connects to all neurons in a core</p>
+                    </section>
+
+                </section>
+
+
+                <section><h2>NeMo Implementation</h2>
+                 <!--Event Flow &amp; Processing -->
+                    <section data-markdown="./markdowns/nemo_features.md">
+
+                    </section>
+                	<section>
+                		<video data-autoplay width="45%" src="./animations/NeMoFlowDiagramAnimated.mp4" ></video>
+
+                	</section>
+                    <section>
+
+
+
+
+                        <br>
+                        <br>
+                        <ul>
+                        <li>Synapses send event messages to the neuron</li>
+                            <li> Neurons integrate the synapse weight at this point</li>
+                            <li>Previous voltage is saved in message</li>
+                        </ul>
+                        <img class="fleft" src="./nemo_flow/synapse1.png"  width=30%>
+                    </section>
+                    <section>
+
+                        <img  src="./nemo_flow/synapse2.png"  class="fleft" width=25%>
+                        <br><br>
+                        <p>Synapse Message Part 2</p>
+
+                        <ul>
+                        <li>Neurons check to see if a "heartbeat" message has been sent</li>
+                            <li>Send heartbeat message if one has not been sent</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <br><br>
+                    <img src="./nemo_flow/heartbeat1.png" width="50%">
+                        <h3>Heartbeat Message Recevied</h3>
+                        <p>Neurons receiving a heartbeat message have either:</p>
+                        <aside class="notes">
+                        When first receiving a heartbeat message - neurons need to run the rest of the IBM algorithm
+                        </aside>
+                        <ul>
+                        <li  class="fragment highlight-red">Had synaptic activity this tick</li>
+                            <li  class="fragment highlight-red">Have the potential to be self-firing</li>
+                            <ul>
+                            <li class="fragment">Positive leak</li>
+                                <li class="fragment">Negative leak with specific reset values</li>
+                                <li class="fragment">And More!</li>
+                            </ul>
+                        <li class="fragment highlight-red">
+                            Neurons save current membrane potential in the message
+                            </li>
+                        </ul>
+
+                    </section>
+                    <section>
+                        <br>
+                    <img src="./nemo_flow/heartbeat2.png" width="40%">
+                        <P>Neurons then:</P>
+                        <ul>
+                            <li>Retreive current time</li>
+                            <li>Calculate the number of ticks since last activating</li>
+                            <li>Store this as $t_d$ </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <br><br>
+                        <img src="./nemo_flow/heartbeat3.png" width="50%">
+                        <p>Leak calculation:</p>
+                         <pre><code data-trim data-noescape>
+while (td > 0) {
+    voltage = voltage - leakFunction();
+    td --;
+}
+
+    </code></pre>
+
+                    </section>
+                    <section>
+                        <br>
+                        <h3>Threshold, reset &amp; fire</h3>
+                        <img src="./nemo_flow/heartbeat4.png" width="40%"><br>
+
+                        <ul>
+                        <li>Check if voltage $V_j$ is $>$ than threshold</li>
+                            <li>Send fire message</li>
+                            <li>Reset or check negative threshold</li>
+
+                        </ul>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>Nemo Event Flow</h2>
+                    <img src="./diagrams/time.png" width="30%" class="fright">
+                    <p>Given an event at $Ax_0$(axon 0)</p>
+
+                                            <ul>
+                                                <li>Synapse $S_{0,0}$ through $S_{0,2}$ activate</li>
+                                                <li>All neurons integrate</li>
+                    </ul>
+
+                    </section>
+
+                <section><h2><i>More</i> NeMo Features</h2>
+                <section>NeMo is built on ROSS!
+                    <p>This allows for large hardware simulations!</p>
+                    <p>Further integration with existing supercomputer simulation models</p>
+                    </section>
+                    <section>
+                        <p>Nemo will have support for JSON neuron models</p>
+                        <p>Input support through Python</p>
+                    </section>
+                    <section>
+                        With Pythonic descriptors of models<p>
+                        NeMo will gain flexibility
+                    </section>
+                    <section>
+                    Comming soon to a simulator near you!
+                    </section>
+                </section>
+
+                <section><h3>NeMo Experimental Results</h3>
+                    <section data-markdown="./markdowns/weakscaling.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n">
+
+                    </section>
+                    <section data-markdown="./markdowns/strong_scaling.md"></section>
+
+                </section>
+                <section><h2>Future Work</h2>
+                <p>The next steps for nemo include:</p>
+                    <ul>
+                        <li class="fragment">Integration with supercomputer simulation software</li>
+                        <li class="fragment">JSON neuromorphic core design support</li>
+                        <li class="fragment">Pythonic I/O for integration with spiking neural network tools</li>
+                    </ul>
+                </section>
+                <section>
+
+                    <a href="refgen.html">References</a>
+                </section>
+
+
+                <!-- Citations -->
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+        <!-- End of presentation !-->
+        </div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+                history: true,
+				previewLinks: true,
+				center: true,
+                width:"100%",
+                height:"100%",
+                margin: 0.05,
+                minScale:0.1,
+                maxScale:2,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+
+
+                    { src: 'plugin/math/math.js', async:true},
+                    //{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize('scroll'); toc_progress.create(); } }
+				]
+			});
+			Reveal.configure({
+  keyboard: {
+    13: 'next', // go to the next slide when the ENTER key is pressed
+    27: function() {}, // do something custom when ESC is pressed
+    32: null // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)
+  }
+});
+		</script>
+
+	</body>
+</html>

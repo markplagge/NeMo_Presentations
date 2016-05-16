@@ -84,12 +84,159 @@
 - Future Work
                     </script>
                 </section>
+                 <section data-markdown>
+                    <script type="text/template">
+## Neuromorphic Computation
+### New Computing Models
+Neuromorphic computing is based on spiking neural networks
+- Based on Artificial Neural Network (ANN) concept
+- Third generation neuron simulations
+- Designed to simulate biological functions
+    - Initially not for general computation
 
 
-			     <section data-markdown="./new_slides.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
-                <section data-markdown="./markdowns/hardware_lif.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
-                <section data-markdown="./markdowns/lif.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
 
+                     </script>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+## Spiking Neurons
+Unlike a traditional Neural Network Neuron:
+- Include concept of time 
+    - State changes over a series of time-steps.
+- Neurons do not need to fire at every time-step $t$
+- Activation level is increased with input spikes
+
+![](./diagrams/spike_output.png)
+![](./diagrams/spike_network.jpg)
+
+
+                     </script>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+## A Brief History of Spiking Neurons
+- First scientific model developed in 1952 by Hodgkin and Huxley
+- Commonly used models include:
+    + Hodgkin and Huxley Model
+    + Integrate and Fire
+    + Leaky Integrate and Fire
+    + Izhikevich's Simple Neuron Model
+    + Many More
+                     </script>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+## Naming Conventions
+
+| Common Name      | Neuromorphic Name |
+|------------------|-------------------|
+| Layer Input      | Dendrite          |
+| Layer Routing    | Synapses          |
+| Computation Unit | Neuron            |
+| Output           | Axons             |
+
+<img src="./tn_slides/1_naming.png" width="40%" >
+
+                     </script>
+                </section>
+
+
+                <section data-markdown>
+                    <script type="text/template">
+                    ## Neuromorphic Hardware
+"Non von Neumann" computation
+- Does not operate using traditional algorithms
+- Tiny power requirements: <= 60 mW
+<center><img src="./tn_slides/single_chip_system.png" width="40%" class="stretch" ></center>
+                     </script>
+                </section>
+
+
+                <section data-markdown>
+                    <script type="text/template">
+                    ### Current Hardware
+
+- Current hardware uses spiking neurons
+    - Neurons output a 1 or 0
+    - Integration is generally simple (no sigmoid functions yet) 
+
+
+<img src="./images/sigmoid.png" width=30% >
+                     </script>
+                </section>
+
+
+                <section data-markdown>
+                    <script type="text/template">
+                    ### True North Chip
+
+Implementation of an enhanced Leaky Integrate and Fire neuron
+
+<img src="./tn_slides/tn_multichip.jpg" width="60%">
+
+                     </script>
+                </section>
+
+
+                <section data-markdown>
+                    <script type="text/template">
+                    ##Leaky Integrate-and-Fire
+## A Basic Spiking Neuron Model
+                     </script>
+                </section>
+
+
+                <section data-markdown>
+                    <script type="text/template">
+                    ### Leaky integrate-and-fire:
+$$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \left[ x_i(t) \, s_i \right]$$
+
+- Takes the sum of all of the input synapses.
+    - $x$ is the on/off state of the synapse
+    - $s_i$ is the synapse weight
+    - $V_j(t)$ is the neuron voltage at time $t$
+                     </script>
+                </section>
+
+
+                <section data-markdown>
+                    <script type="text/template">
+                    ### Leaky integrate-and-fire
+*Leak and reset for neuron $j$:*
+
+- Leak: <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="1" -->
+$$V_j(t) = V_j(t) - \lambda_j $$
+- Spike & Reset: <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="3" -->
+\begin{align}&\textbf{if}~~V\_j(t) \geq \alpha\_j: \notag \\\\&\qquad \text{Spike}\notag \\\\ &\qquad V\_j(t)= R\_j \notag \\\\ &\textbf{end if} \notag \end{align}
+
+- $\lambda_j$ is the leak value of the neuron.  <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="1" -->
+- $\alpha_j$ is the threshold of the neuron. <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="3" -->
+- $R_j$ is the reset voltage. <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="3" -->
+                     </script>
+                </section>
+
+
+                <section data-markdown>
+                    <script type="text/template">
+ ### Leaky integrate-and-fire
+The Combined Formula
+
+**Integration:**
+$$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \\left[ x\_i(t) \, s\_i \\right]$$
+
+**Leak:**
+\begin{equation}
+        V_j(t) = V_j(t) - \lambda_j   \notag
+\end{equation}
+
+**Threshold check & Fire:**
+\begin{align}&\textbf{if}~~V\_j(t) \geq \alpha\_j: \notag \\\\&\qquad \text{Spike}\notag \\\\ &\qquad V\_j(t)= R\_j \notag \\\\ &\textbf{end if} \notag \end{align}                   
+                     </script>
+                </section>
                 <section>
                     <h2>IBM TrueNorth Neuron</h2>
                     <section>
@@ -123,12 +270,7 @@
                         Leak modes allow for greater flexibility over LIF model<p>
                         Able to reproduce Izhikevich's biologically important neuron models<p>
                     </section>
-                    <section>
-                    <h3>For those interested</h3>
-                        Full IBM TrueNorth neuron formula and description available as handout<p>
 
-
-                    </section>
                     <section data-markdown="./markdowns/tn_prog_th.md">
                     </section>
 
@@ -159,18 +301,29 @@
                     </section>
                 <section>
 
-                    <img src="./tn_slides/one_neuron_one_axon.png" width="60%">
+                    <img src="./tn_slides/one_neuron_one_axon.png" width="50%">
                     <p>One neuron connects to one axon</p>
                     <p>One axon connects to all neurons in a core</p>
                     </section>
 
                 </section>
-
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+NEMO START 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11-->
 
                 <section><h2>NeMo Implementation</h2>
                  <!--Event Flow &amp; Processing -->
                     <section data-markdown="./markdowns/nemo_features.md">
 
+                    </section>
+                    <section>
+                    <h3>Compared with IBM COMPASS</h3>
+                    <ul>
+                    <li> NeMo is open source and freely available to use</li>
+                    <li> NeMo is able to simulate non-IBM hardware</li>
+                    <li> NeMo supports various hardware architectures - IBM Blue Gene as well as Intel </li>
+                    </ul>
                     </section>
                 	<section>
                 		<video data-autoplay width="45%" src="./animations/NeMoFlowDiagramAnimated.mp4" ></video>
@@ -204,7 +357,7 @@
                     <section>
                         <br><br>
                     <img src="./nemo_flow/heartbeat1.png" width="50%">
-                        <h3>Heartbeat Message Recevied</h3>
+                        <h3>Heartbeat Message Received</h3>
                         <p>Neurons receiving a heartbeat message have either:</p>
                         <aside class="notes">
                         When first receiving a heartbeat message - neurons need to run the rest of the IBM algorithm
@@ -279,7 +432,7 @@ while (td > 0) {
                     <p>Further integration with existing supercomputer simulation models</p>
                     </section>
                     <section>
-                        <p>Nemo will have support for JSON neuron models</p>
+                        <p>NeMo will have support for JSON neuron models</p>
                         <p>Input support through Python</p>
                     </section>
                     <section>
@@ -287,7 +440,7 @@ while (td > 0) {
                         NeMo will gain flexibility
                     </section>
                     <section>
-                    Comming soon to a simulator near you!
+                    Coming soon to a simulator near you!
                     </section>
                 </section>
 

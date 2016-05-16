@@ -170,7 +170,7 @@ http://lis2.epfl.ch/CompletedResearchProjects/EvolutionOfAdaptiveSpikingCircuits
 	- Leaky integrate and fire
 	- Many more...
 
-
+spike
 ## Naming Conventions
 Spiking neural networks use bio inspired terms
 <img src="./tn_slides/1_naming.png" width="75%" class="stretch">

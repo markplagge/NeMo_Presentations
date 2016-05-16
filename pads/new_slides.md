@@ -30,7 +30,6 @@ Unlike a traditional Neural Network Neuron:
 
 
 
-
 ## Naming Conventions
 Spiking neural networks use bio inspired terms
 <img src="./tn_slides/1_naming.png" width="75%" class="stretch">

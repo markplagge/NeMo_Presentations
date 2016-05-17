@@ -41,6 +41,10 @@
 
 
             }
+            img.fbot {
+                float: bottom;
+                overflow: auto;
+            }
             .reveal .refs {
                 font-size:"20%"
 
@@ -64,23 +68,33 @@
 	<body>
 
 		<div class="reveal">
-
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+<!--                         <div id="myLogo" style="background: url(./logos/seal.png);
+                        position: absolute;
+                        bottom: 100px;
+                        right: 100px;
+                        width: 50px;
+                        height: 50px;"></div> -->
+
                 <section data-markdown>
                     <script type="text/template">
                         # NeMo
-                        #### A Parallel Discrete Event Neuromorphic Hardware Simulation Model
+                        ### A Parallel Discrete Event Neuromorphic Hardware Simulation Model
+                        #### Mark Plagge <br> Christopher D. Carothers <br> Elsa Gonsiorowski
+                        #### Department of Computer Science
+                        #### Rensselaer Polytechnic Institute
+
                     </script>
                 </section>
                     <section data-markdown>
                     <script type="text/template">
 ## Overview
-- Neuromorphic Hardware
+- Neuromorphic Computing & Hardware
 - Demand and Potential
 - Neuromorphic Software Models
-- Contributions of NeMo
-- Experimental Results
+- Introducing NeMo
+- Experimental Setup and Results
 - Future Work
                     </script>
                 </section>
@@ -103,7 +117,7 @@ Neuromorphic computing is based on spiking neural networks
                     <script type="text/template">
 ## Spiking Neurons
 Unlike a traditional Neural Network Neuron:
-- Include concept of time 
+- Include concept of time
     - State changes over a series of time-steps.
 - Neurons do not need to fire at every time-step $t$
 - Activation level is increased with input spikes
@@ -155,75 +169,50 @@ Unlike a traditional Neural Network Neuron:
                      </script>
                 </section>
 
+<section data-markdown>
+<script type="text/template">
+## Demand and Potential
+- Supercomputers are  Transitioning to “Fat Nodes”
+- Accelerator cards are becoming increasingly important
+    - GPU, Intel PHI
+<br><br>
+<h5>Neuromorphic hardware could be an excellent acceleration card</h5>
 
-                <section data-markdown>
+- Need a model to simulate various neuromorphic hardware designs
+- We wish to simulate neuromorphic hardware operating within a supercomputer simulation.
+
+</script>
+</section>
+              <!--   <section data-markdown>
                     <script type="text/template">
                     ### Current Hardware
 
 - Current hardware uses spiking neurons
     - Neurons output a 1 or 0
-    - Integration is generally simple (no sigmoid functions yet) 
+    - Integration is generally simple (no sigmoid functions yet)
+
 
 
 <img src="./images/sigmoid.png" width=30% >
                      </script>
-                </section>
+                </section> -->
 
 
-                <section data-markdown>
+                 <section data-markdown>
                     <script type="text/template">
                     ### True North Chip
 
 Implementation of an enhanced Leaky Integrate and Fire neuron
 
-<img src="./tn_slides/tn_multichip.jpg" width="60%">
+<img src="./tn_slides/tn_multichip.jpg" width="50%">
 
                      </script>
                 </section>
-
-
-                <section data-markdown>
-                    <script type="text/template">
-                    ##Leaky Integrate-and-Fire
-## A Basic Spiking Neuron Model
-                     </script>
-                </section>
-
-
-                <section data-markdown>
-                    <script type="text/template">
-                    ### Leaky integrate-and-fire:
-$$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \left[ x_i(t) \, s_i \right]$$
-
-- Takes the sum of all of the input synapses.
-    - $x$ is the on/off state of the synapse
-    - $s_i$ is the synapse weight
-    - $V_j(t)$ is the neuron voltage at time $t$
-                     </script>
-                </section>
-
-
-                <section data-markdown>
-                    <script type="text/template">
-                    ### Leaky integrate-and-fire
-*Leak and reset for neuron $j$:*
-
-- Leak: <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="1" -->
-$$V_j(t) = V_j(t) - \lambda_j $$
-- Spike & Reset: <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="3" -->
-\begin{align}&\textbf{if}~~V\_j(t) \geq \alpha\_j: \notag \\\\&\qquad \text{Spike}\notag \\\\ &\qquad V\_j(t)= R\_j \notag \\\\ &\textbf{end if} \notag \end{align}
-
-- $\lambda_j$ is the leak value of the neuron.  <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="1" -->
-- $\alpha_j$ is the threshold of the neuron. <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="3" -->
-- $R_j$ is the reset voltage. <!-- .element: class="fragment roll-in visible current-fragment" data-fragment-index="3" -->
-                     </script>
-                </section>
-
 
                 <section data-markdown>
                     <script type="text/template">
  ### Leaky integrate-and-fire
-The Combined Formula
+The Complete Formula
 
 **Integration:**
 $$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \\left[ x\_i(t) \, s\_i \\right]$$
@@ -234,13 +223,12 @@ $$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \\left[ x\_i(t) \, s\_i \\right]$$
 \end{equation}
 
 **Threshold check & Fire:**
-\begin{align}&\textbf{if}~~V\_j(t) \geq \alpha\_j: \notag \\\\&\qquad \text{Spike}\notag \\\\ &\qquad V\_j(t)= R\_j \notag \\\\ &\textbf{end if} \notag \end{align}                   
+\begin{align}&\textbf{if}~~V\_j(t) \geq \alpha\_j: \notag \\\\&\qquad \text{Spike}\notag \\\\ &\qquad V\_j(t)= R\_j \notag \\\\ &\textbf{end if} \notag \end{align}
                      </script>
                 </section>
                 <section>
                     <h2>IBM TrueNorth Neuron</h2>
-                    <section>
-                    <h3>Neuron Implementation</h3>
+                    
                         <ul>
                         <li>IBM Enhanced the Leaky Integrate and Fire Neuron</li>
                             <li>Added stochastic integration:</li>
@@ -251,57 +239,48 @@ $$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \\left[ x\_i(t) \, s\_i \\right]$$
                         </ul>
 
                     </section>
-                    <section>
-                    <h3>Neuron Implementation</h3>
-                        IBM added 3 new leak modes:
-
-
-                    <table class="tg">
-                      <tr>
-                        <th class="tg-031e"> <img src="./graphs/mon_down.svg" ><br>Negative</th>
-                        <th class="tg-031e"><img src="./graphs/diverg.svg" ><br>Divergent</th>
-                        <th class="tg-yw4l"><img src="./graphs/converg.svg" ><br>Convergent    </th>
-                      </tr>
-                    </table>
-                    </section>
-                    <section>
-
-                        Stochastic integration allows for probabilistic features<p>
-                        Leak modes allow for greater flexibility over LIF model<p>
-                        Able to reproduce Izhikevich's biologically important neuron models<p>
-                    </section>
-
+                    
                     <section data-markdown="./markdowns/tn_prog_th.md">
                     </section>
 
                 </section>
                 <!-- %%%%%%%%%%%%True North Hardware Quickie -->
-                <section><h3>IBM TrueNorth Hardware Layout</h3>
-                <section></section>
                 <section>
-                    TrueNorth is a neurosynaptic processor
+                    <h2>IBM TrueNorth Hardware </h2>         
+                <section>
+                    <h3>TrueNorth is a neurosynaptic processor </h3>
                     <ul>
                     <li>Developed through DARPA project</li>
                         <li>Designed as a low power dedicated processor</li>
                     </ul>
                 </section>
-                <section data-markdown="./markdowns/tn_layout.md"></section>
-                <section>
-                <h3>Input Axons</h3>
-                    Input axons are arranged in a connected grid
-                    <img src="./tn_slides/axon_grid.png" width="50%">
+                <section data-markdown>
+                <script type="text-template">
+### Neurosynaptic Core
+
+A Neurosynaptic Core is 256 neurons, interconnected
+
+<img src="./tn_slides/neurosynaptic_core.png" width="45%">
+
+
+                </script>
                 </section>
                 <section>
-                   <br>
-                    Synapses exist as a logical connection between axons and neurons.
+                <h3>Input Axons</h3>
+                    Input axons are arranged in a connected grid <br>
+                    <img src="./tn_slides/axon_grid.png" width="40%">
+                </section>
+                <section>
+                    <h3>Synapse Grid</h3><br>
+                    <img src="./tn_slides/synapses.png" width="30%" class="fright">
                     <p>There are $256^2$ synapses per core</p>
-                    <img src="./tn_slides/synapses.png" width="40%">
-
+                    
+                    <p>Synapses exist as a logical connection between axons and neurons.</p>
 
                     </section>
                 <section>
 
-                    <img src="./tn_slides/one_neuron_one_axon.png" width="50%">
+                    <img src="./tn_slides/one_neuron_one_axon.png" width="40%" class="fleft">
                     <p>One neuron connects to one axon</p>
                     <p>One axon connects to all neurons in a core</p>
                     </section>
@@ -309,14 +288,48 @@ $$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \\left[ x\_i(t) \, s\_i \\right]$$
                 </section>
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-NEMO START 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+NEMO START
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11-->
 
                 <section><h2>NeMo Implementation</h2>
-                 <!--Event Flow &amp; Processing -->
-                    <section data-markdown="./markdowns/nemo_features.md">
 
-                    </section>
+                 <!--Event Flow &amp; Processing -->
+                    <!-- <section data-markdown="./markdowns/nemo_features.md">
+
+                    </section> -->
+                    <section data-markdown>
+                    <script type="text/template">
+                    ### NeMo Features
+- "Heartbeat" messages that provide implicit synchronization
+- Message fanout reduction through message routing
+- Reverse computation for optimistic scheduling
+- Supports very large simulation models
+- Supports simulation of non-IBM Hardware
+- Provides an open framework for simulation of new hardware designs:
+    + One neuron per core to thousands of neurons per core
+    + Weighted synapses
+    + Different spiking neuron models
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+### NeMo Features
+- Implemented using ROSS (Rensselaer's Optimistic Simulation System)
+- ROSS provides optimistic and conservative parallel discrete event simulation
+- NeMo functions best in optimistic mode
+</script>
+</section>
                     <section>
                     <h3>Compared with IBM COMPASS</h3>
                     <ul>
@@ -327,13 +340,8 @@ NEMO START
                     </section>
                 	<section>
                 		<video data-autoplay width="45%" src="./animations/NeMoFlowDiagramAnimated.mp4" ></video>
-
                 	</section>
                     <section>
-
-
-
-
                         <br>
                         <br>
                         <ul>
@@ -366,9 +374,11 @@ NEMO START
                         <li  class="fragment highlight-red">Had synaptic activity this tick</li>
                             <li  class="fragment highlight-red">Have the potential to be self-firing</li>
                             <ul>
-                            <li class="fragment">Positive leak</li>
-                                <li class="fragment">Negative leak with specific reset values</li>
-                                <li class="fragment">And More!</li>
+                            <div class="fragment">
+                            <li>Positive leak</li>
+                                <li >Negative leak with specific reset values</li>
+                                <li >And More!</li>
+                                </div>
                             </ul>
                         <li class="fragment highlight-red">
                             Neurons save current membrane potential in the message
@@ -426,35 +436,50 @@ while (td > 0) {
 
                     </section>
 
-                <section><h2><i>More</i> NeMo Features</h2>
-                <section>NeMo is built on ROSS!
-                    <p>This allows for large hardware simulations!</p>
-                    <p>Further integration with existing supercomputer simulation models</p>
-                    </section>
-                    <section>
-                        <p>NeMo will have support for JSON neuron models</p>
-                        <p>Input support through Python</p>
-                    </section>
-                    <section>
-                        With Pythonic descriptors of models<p>
-                        NeMo will gain flexibility
-                    </section>
-                    <section>
-                    Coming soon to a simulator near you!
-                    </section>
-                </section>
 
                 <section><h3>NeMo Experimental Results</h3>
+                <section>
+                <h4>Model Validation</h4>
+                
+               
+                    <ul>
+                        <li>The IBM Model is able to reproduce Izhikevich's Interesting Biological Neurons</li>
+                        <li>We recreated two of these models using NeMo and IBM's published parameters</li>
+                    </ul>
+
+                        <img src="./images/tonic_bursting_vld.png" width="30%" >
+                        <img src="./images/bursting_ibm.png"  width="20%"> 
+                        <i> Tonic Bursting Function Results </i>
+                        </section>
+                        <section>
+
+                        <img src="./images/phasic_spike.png" width="30%">
+                        <img src="./images/spike_ibm.png" width="20%">
+                        <p class="fright">
+                        <i>Phasic Spiking Results</i><br>
+                    These are two of Izhikevich's Neuron Models, reproduced by Cassidy et al.
+                    </p>
+                  
+
+
+                
+                </section>
+
+                <section>
+                <h4>Performance Experements</h4>
+                
+                
                     <section data-markdown="./markdowns/weakscaling.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n">
 
                     </section>
                     <section data-markdown="./markdowns/strong_scaling.md"></section>
 
+                </section></section>
                 </section>
                 <section><h2>Future Work</h2>
                 <p>The next steps for nemo include:</p>
                     <ul>
-                        <li class="fragment">Integration with supercomputer simulation software</li>
+                        <li class="fragment">Integration with supercomputer simulation software (CODES) </li>
                         <li class="fragment">JSON neuromorphic core design support</li>
                         <li class="fragment">Pythonic I/O for integration with spiking neural network tools</li>
                     </ul>

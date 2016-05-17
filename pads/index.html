@@ -466,19 +466,34 @@ while (td > 0) {
 
 
                 
-                </section>
-
+                    </section>
+                    </section>
                 <section>
                 <h4>Performance Experements</h4>
-                
-                
-                    <section data-markdown="./markdowns/weakscaling.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n">
+                    <section>
 
+                    - Evaluation System
+                        - Center for Computational Innovations (CCI) IBM Blue Gene/q 
+                            - 64 Hardware Threads / Node
+                            - 16 GB Memory per Node
+                    - Ran a randomized network with 80% remote (off-core) probability
+                
+                    </section>
+                
+
+                    <section data-markdown>
+                    <script type="text/template">
+                        <img src="./result_img/weak_scaling_en_chart.png" width="40%" class="fright">
+                        
+                        - NeMo Weak Scaling Performance
+                        - Running a randomly connected network
+                        - 80% remote message probability
+                    </script>
                     </section>
                     <section data-markdown="./markdowns/strong_scaling.md"></section>
 
-                </section></section>
                 </section>
+                
                 <section><h2>Future Work</h2>
                 <p>The next steps for nemo include:</p>
                     <ul>

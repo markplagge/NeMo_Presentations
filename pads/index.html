@@ -301,6 +301,8 @@ A Neurosynaptic Core is 256 neurons, interconnected
                     <img src="./tn_slides/one_neuron_one_axon.png" width="40%" class="fleft">
                     <p>One neuron connects to one axon</p>
                     <p>One axon connects to all neurons in a core</p>
+                    <p>There are $4096$ cores in a TrueNorth processor</p>
+                    <p>This gives $1,048,576$ neurons, $1,048,576$ axons, and $268,435,456$ synapes per chip</p>
                     </section>
 
                 </section>
@@ -445,7 +447,7 @@ while (td > 0) {
                 <section>
                     <h2>Nemo Event Flow</h2>
                     <img src="./diagrams/time.jpg" width="30%" class="fright">
-                    <p>Given an event at $Ax_0$(axon 0)</p>
+                    <p><br>Given an event at $Ax_0$(axon 0):</p>
 
                                             <ul>
                                                 <li>Synapse $S_{0,0}$ through $S_{0,2}$ activate</li>
@@ -508,8 +510,12 @@ while (td > 0) {
                         - NeMo Weak Scaling Performance
                         - Running a randomly connected network
                         - 80% remote message probability
-                        - Generally excellent results
+                        - Generally excellent results 
+                        Note:
+                        Largest run simulated: 65536 cores, $1.77 × 10^{13}$ LPs - 1.7 trillion LPs on 1024 Blue Gene Q Nodes
+                    
                     </script>
+                    
                     </section>
                     <section data-markdown>
                         <script type="text/template">

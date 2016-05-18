@@ -249,7 +249,16 @@ $$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \\left[ x\_i(t) \, s\_i \\right]$$
 
                     </section>
                     
-                    <section data-markdown="./markdowns/tn_prog_th.md">
+                    <section data-markdown>
+                    <script type="text-template">
+                    ###Programming TrueNorth Concepts
+
+- TrueNorth is inspired by biology but does not seek to mimic it exactly
+- TrueNorth chip is a network of neurosynaptic cores
+- A TrueNorth “program” is a complete specification of that network, including inputs and outputs
+- That program is specified as a “corelet”
+- Tools like Caffe can be used to learn TrueNorth-compatible corelets from data
+                    </script>
                     </section>
 
                 </section>
@@ -435,7 +444,7 @@ while (td > 0) {
 
                 <section>
                     <h2>Nemo Event Flow</h2>
-                    <img src="./diagrams/time.png" width="30%" class="fright">
+                    <img src="./diagrams/time.jpg" width="30%" class="fright">
                     <p>Given an event at $Ax_0$(axon 0)</p>
 
                                             <ul>
@@ -482,25 +491,35 @@ while (td > 0) {
                     <section data-markdown>
                     <script type="text/template">
                     - Evaluation System
-                        - Center for Computational Innovations (CCI) IBM Blue Gene/q 
+                        - Center for Computational Innovations (CCI) IBM Blue Gene/Q 
                             - 64 Hardware Threads / Node
                             - 16 GB Memory per Node
                     - Ran a randomized network with 80% remote (off-core) probability
-                    - Neurons were organized in an "identity matrix" of 1-1 activations
+                    - Neurons were organized in an "identity matrix" of 1-1 activations:
+                        - When neuron $n$ recevied a message from axon $n$, it would spike to a random axon.
                     </script>
                     </section>
                 
 
                     <section data-markdown>
                     <script type="text/template">
-                        <img src="./result_img/weak_scaling_en_chart.png" width="40%" class="fright">
-                        
+                        <img src="./result_img/weak_scaling_en_chart.jpg" width="50%" class="fright"><br>
                         - NeMo Weak Scaling Performance
                         - Running a randomly connected network
                         - 80% remote message probability
+                        - Generally excellent results
                     </script>
                     </section>
-                    <section data-markdown="./markdowns/strong_scaling.md"></section>
+                    <section data-markdown>
+                        <script type="text/template">
+                        <img src="./result_img/strong_scale.jpg" class="fill" width="50%" -->
+
+- Strong scaling shows initially excellent results
+- The simulation begins to loose parallelism
+- Larger simulation runs should improve strong scaling 
+
+                        </script>
+                    </section>
 
                 </section>
                 

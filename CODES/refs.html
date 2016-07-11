@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <title>Bibtex-JS</title>
+
+    
+    <!-- Javascript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="./Scripts/bibtex-js.js"></script>
+
+
+    <script type="text/javascript">
+    $(function () {
+
+        $('#bibtex-conferences').BibtexJS({
+            TemplateString: $("#bibtex-conference-template").text(),
+            BibtexString: $("#bibtex-conference-input").text(),
+            AuthorToHighlight: "Potharaju, Rahul"
+        });
+
+        $('#bibtex-journals').BibtexJS({
+            TemplateString: $("#bibtex-journals-template").text(),
+            BibtexString: $("#bibtex-journals-input").text(),
+            AuthorToHighlight: "Potharaju, Rahul"
+        });
+
+      });
+    </script>
+
+    <!-- Templates -->
+    <!-- One template could've been used but this is just to show the power 
+        of Bibtex-JS library to support multiple templates -->
+    <script type="text/template" id="bibtex-conference-input">
+
+@inproceedings{potharaju2013middleboxes,
+  title={ Demystifying the Dark Side of the Middle: A Field Study of Middlebox Failures in Datacenters},
+  author={Potharaju, Rahul and Jain, Navendu},
+  booktitle={To Appear in the Proceedings of the ACM Internet Measurement Conference (IMC)},
+  conference={{ACM IMC}},
+  year={2013}
+}
+
+@inproceedings{potharaju2013juggling,
+  title={Juggling the Jigsaw: Towards Automated Problem Inference from Network Trouble Tickets},
+  author={Potharaju, Rahul and Jain, Navendu and Nita-Rotaru, Cristina},
+  booktitle={Proceedings of the 10th USENIX conference on Networked Systems Design and Implementation},
+  conference={{USENIX NSDI}},
+  year={2013}
+}
+
+    </script>
+
+    <script id="bibtex-conference-template" type="text/template">
+        <div class="bibtex_conference_template">
+            <div class="if author" style="font-weight: bold; font-size: medium; padding-top: 30px;">
+                <span class="if year"><strong><span class="conference" style="color: #000;"></span>  <span class="year" style="color: #000;"></span></strong>, </span><span class="title"></span>
+                <span class="if url" style="margin-left: 20px">
+                    <a class="url" style="color:black; font-size:10px">(view online)</a>
+                </span>
+            </div>
+            <div style="margin-left: 10px; margin-bottom:5px;">
+                <span class="author"></span>, <span class="booktitle" style="font-weight: bold; font-size:small;"></span>
+            </div>
+            <div class="if booktitle" style="font-size: small; font-weight: bold; margin-left: 10px; margin-bottom:5px;">
+            </div>
+        </div>
+    </script>
+
+    <script id="bibtex-journals-input" type="text/template">
+
+@inproceedings{potharajusidewalk2013,
+    title={Where the Sidewalk Ends: Extending the Internet AS Graph Using Traceroutes From P2P Users},
+    author={Chen, Kai and Choffnes, David and Potharaju, Rahul and Chen, Yan and Bustamante, Fabián and Pei, Dan and Zhao, Yao},
+    booktitle={Journal Proceedings of IEEE Transactions on Computers (IEEE TC)},
+    conference={{IEEE TC}},
+    year={2013}
+}
+
+@inproceedings{potharajuprivatebadges2013,
+    title={Private Badges for Geosocial Networks},
+    author={Carbunar, Bogdan and Sion, Radu and Potharaju, Rahul and Ehsan, Moussa},
+    booktitle={Journal Proceedings of IEEE Transactions on Mobile Computing (IEEE TMC)},
+    conference={{ACM TMC}},
+    year={2013}
+}
+
+</script>
+
+    <script id="bibtex-journals-template" type="text/template">
+        <div class="bibtex_journals_template">
+            <div class="if author" style="font-weight: bold; font-size: medium; padding-top: 30px;">
+                <span class="if year"><strong><span class="conference" style="color: #000;"></span>  <span class="year" style="color: #000;"></span></strong>, </span><span class="title"></span>
+                <span class="if url" style="margin-left: 20px">
+                    <a class="url" style="color:black; font-size:10px">(view online)</a>
+                </span>
+            </div>
+            <div style="margin-left: 10px; margin-bottom:5px;">
+                <span class="author"></span>, <span class="booktitle" style="font-weight: bold; font-size:small;"></span>
+            </div>
+            <div class="if booktitle" style="font-size: small; font-weight: bold; margin-left: 10px; margin-bottom:5px;">
+            </div>
+        </div>
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+		<div class="body">
+
+			<div role="main" class="main">
+
+        <h1>Bibtex-JS</h1>
+        <h2>The easy way to manage your publications</h2>
+        <h3>Right-click and View Source to see how easy it is to build this page</h3>
+
+				<div id="content" class="content full">
+
+					<div class="container">
+						<div class="row">
+							<div class="span12">
+								<h2><strong>Publications</strong></h2>
+
+                    <h3>Conferences</h3>
+                    <div id="bibtex-conferences"></div>
+
+                    <br />
+                    <h3>Journals</h3>
+                    <div id="bibtex-journals"></div>
+
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+            </div>
+
+		</div>
+
+
+
+	</body>
+
+</html>

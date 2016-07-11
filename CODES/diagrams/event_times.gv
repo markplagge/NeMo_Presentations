@@ -1,0 +1,42 @@
+/* Created with the Wolfram Language : www.wolfram.com */
+
+digraph {
+	"Ax\n  0" [label="Ax\n  0"];
+	"S\n 0,0" [label="S\n 0,0"];
+	"S\n 0,1" [label="S\n 0,1"];
+	"S\n 0,2" [label="S\n 0,2"];
+	"Ax\n  1" [label="Ax\n  1"];
+	"S\n 1,0" [label="S\n 1,0"];
+	"S\n 1,1" [label="S\n 1,1"];
+	"S\n 1,2" [label="S\n 1,2"];
+	"Ax\n  2" [label="Ax\n  2"];
+	"S\n 2,0" [label="S\n 2,0"];
+	"S\n 2,1" [label="S\n 2,1"];
+	"S\n 2,2" [label="S\n 2,2"];
+	"N\n 1" [label="N\n 1"];
+	"N\n 2" [label="N\n 2"];
+	"N\n 0" [label="N\n 0"];
+
+	"Ax\n  1" -> "S\n 1,0";
+	"S\n 1,0" -> "S\n 1,1";
+	"S\n 1,1" -> "S\n 1,2";
+	"Ax\n  2" -> "S\n 2,0";
+	"S\n 2,0" -> "S\n 2,1";
+	"S\n 2,1" -> "S\n 2,2";
+	
+	"S\n 1,0" -> "N\n 0";
+	"S\n 1,1" -> "N\n 1";
+	"S\n 1,2" -> "N\n 2";
+	"S\n 2,0" -> "N\n 0";
+	"S\n 2,1" -> "N\n 1";
+	"S\n 2,2" -> "N\n 2";
+	"S\n 0,0" -> "N\n 0" [label="T.002 + 𝜀" color="red"];
+	"S\n 0,1" -> "N\n 1" [label="T.003 + 𝜀" color="red"];
+	"S\n 0,2" -> "N\n 2" [label="T.004 + 𝜀" color="red"];
+	
+	"Ax\n  0" -> "S\n 0,0" [label="T.001 + 𝜀" color="red"];
+	"S\n 0,0" -> "S\n 0,1" [label="T.002 + 𝜀" color="red"];
+	"S\n 0,1" -> "S\n 0,2" [label="T.003 + 𝜀" color="red"];
+
+	
+}

@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>NeMo - The Neuromorphic Hardware Simulation Model</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+        <style>
+            img.fleft {
+                float: left;
+                overflow: auto;
+
+            }
+            img.fright {
+                float: right;
+                overflow: auto;
+
+
+
+            }
+            img.fbot {
+                float: bottom;
+                overflow: auto;
+            }
+            .reveal .refs {
+                font-size:"20%"
+
+            }
+            .reveal .reference_footnote {
+    float:left;
+    border:0; padding:0; margin:0;
+    position:fixed;
+    bottom:0%; right:0%;
+    font-size:40%;
+    text-align: right;
+    line-height:110%;  /* slightly compressed */
+}
+        </style>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+<!--                         <div id="myLogo" style="background: url(./logos/seal.png);
+                        position: absolute;
+                        bottom: 100px;
+                        right: 100px;
+                        width: 50px;
+                        height: 50px;"></div> -->
+
+                <section data-markdown>
+                    <script type="text/template">
+                        # NeMo
+                        ### A Parallel Discrete Event Neuromorphic Hardware Simulation Model
+                        #### Mark Plagge
+                        #### Christopher D. Carothers
+                        #### Elsa Gonsiorowski
+                        Department of Computer Science,
+                        Rensselaer Polytechnic Institute
+
+                    </script>
+                </section>
+                    <section data-markdown>
+                    <script type="text/template">
+## Overview
+- Neuromorphic Computing & Hardware
+- Demand and Potential
+- Neuromorphic Software Models
+- Introducing NeMo
+- Experimental Setup and Results
+- Future Work
+                    </script>
+                </section>
+                 <section data-markdown>
+                    <script type="text/template">
+## Neuromorphic Computation
+### New Computing Models
+Neuromorphic computing is based on spiking neural networks
+- Based on Artificial Neural Network (ANN) concept
+- Third generation neuron simulations
+- Designed to simulate biological functions
+    - Initially not for general computation
+
+
+
+
+                     </script>
+
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+## Spiking Neurons
+Unlike a traditional Neural Network Neuron:
+- Include concept of time
+    - State changes over a series of time-steps.
+- Neurons do not need to fire at every time-step $t$
+- Activation level is increased with input spikes
+
+![](./diagrams/spike_output.png)
+![](./diagrams/spike_network.jpg)
+
+
+                     </script>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+## Spiking Neuron Models
+<img src="./images/hum.jpg" width="30%" class="fright">
+- First scientific model developed in 1952
+- Commonly used models include:
+    + Hodgkin and Huxley Model
+    + Integrate and Fire
+    + Leaky Integrate and Fire
+    + Izhikevich's Simple Neuron Model
+    + Many More
+
+
+                     </script>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+## Naming Conventions
+
+| Common Name      | Neuromorphic Name |
+|------------------|-------------------|
+| Layer Input      | Dendrite          |
+| Layer Routing    | Synapses          |
+| Computation Unit | Neuron            |
+| Output           | Axons             |
+
+<img src="./tn_slides/1_naming.png" width="40%" >
+
+                     </script>
+                </section>
+
+
+                <section data-markdown>
+                    <script type="text/template">
+                    ## Neuromorphic Hardware
+"Non von Neumann" computation
+- Does not operate using traditional algorithms
+- Tiny power requirements: <= 60
+- Great at data classification
+<center><img src="./tn_slides/single_chip_system.png" width="40%" class="stretch" ></center>
+                     </script>
+                </section>
+<!-- REMOVED FOR PADS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+<section data-markdown>
+<script type="text/template">
+## Demand and Potential
+- Supercomputers are  Transitioning to “Fat Nodes”
+- Accelerator cards are becoming increasingly important
+    - GPU, Intel PHI
+<br><br>
+<h5>Neuromorphic hardware could be an excellent systems health monitoring system</h5>
+- Neuromorphic hardware excels at pattern recognition
+- Potential for managing power, predicting errors, and monitoring application performance.
+- Need a model to simulate various neuromorphic hardware designs
+- We wish to simulate neuromorphic hardware operating within a supercomputer simulation.
+
+</script>
+</section>
+-->
+
+              <!--   <section data-markdown>
+                    <script type="text/template">
+                    ### Current Hardware
+
+- Current hardware uses spiking neurons
+    - Neurons output a 1 or 0
+    - Integration is generally simple (no sigmoid functions yet)
+
+
+
+<img src="./images/sigmoid.png" width=30% >
+                     </script>
+                </section> -->
+
+<!-- REMOVED FOR CODES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                 <section data-markdown>
+                    <script type="text/template">
+                    ### True North Chip
+
+Implementation of an enhanced Leaky Integrate and Fire neuron
+
+<img src="./tn_slides/tn_multichip.jpg" width="50%">
+
+                     </script>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+ ### Leaky integrate-and-fire
+The Complete Formula
+
+**Integration:**
+$$V\_j(t) =  V\_j(t-1) \sum_{i=0}^{n-1} \\left[ x\_i(t) \, s\_i \\right]$$
+
+**Leak:**
+\begin{equation}
+        V_j(t) = V_j(t) - \lambda_j   \notag
+\end{equation}
+
+**Threshold check & Fire:**
+\begin{align}&\textbf{if}~~V\_j(t) \geq \alpha\_j: \notag \\\\&\qquad \text{Spike}\notag \\\\ &\qquad V\_j(t)= R\_j \notag \\\\ &\textbf{end if} \notag \end{align}
+                     </script>
+                </section>
+                <section>
+                    <h2>IBM TrueNorth Neuron</h2>
+
+                        <ul>
+                        <li>IBM Enhanced the Leaky Integrate and Fire Neuron</li>
+                            <li>Added stochastic integration:</li>
+                            <ul>
+                                <li>Enables probabilistic leak and synapse integration</li>
+                                <li>Enhanced integration allows for conversion of Caffe models</li>
+                            </ul>
+                        </ul>
+
+                    </section>
+
+                    <section data-markdown>
+                    <script type="text-template">
+                    ###Programming TrueNorth Concepts
+
+- TrueNorth is inspired by biology but does not seek to mimic it exactly
+- TrueNorth chip is a network of neurosynaptic cores
+- A TrueNorth “program” is a complete specification of that network, including inputs and outputs
+- That program is specified as a “corelet”
+- Tools like Caffe can be used to learn TrueNorth-compatible corelets from data
+                    </script>
+                    </section>
+
+                </section>
+                <!-- %%%%%%%%%%%%True North Hardware Quickie -->
+
+<!-- Removed for CODES ````````````````````````````````````
+                <section>
+                    <h2>IBM TrueNorth Hardware </h2>
+                <section>
+                    <h3>TrueNorth is a neurosynaptic processor </h3>
+                    <ul>
+                    <li>Developed through DARPA project</li>
+                        <li>Designed as a low power dedicated processor</li>
+                    </ul>
+                </section>
+                <section data-markdown>
+                <script type="text-template">
+### Neurosynaptic Core
+
+A Neurosynaptic Core is 256 neurons, interconnected
+
+<img src="./tn_slides/neurosynaptic_core.png" width="45%">
+
+
+                </script>
+                </section>
+
+                <section>
+                <h3>Input Axons</h3>
+                    Input axons are arranged in a connected grid <br>
+                    <img src="./tn_slides/axon_grid.png" width="40%">
+                </section>
+                <section>
+                    <h3>Synapse Grid</h3><br>
+                    <img src="./tn_slides/synapses.png" width="30%" class="fright">
+                    <p>There are $256^2$ synapses per core</p>
+
+                    <p>Synapses exist as a logical connection between axons and neurons.</p>
+
+                    </section>
+                <section>
+
+                    <img src="./tn_slides/one_neuron_one_axon.png" width="40%" class="fleft">
+                    <p>One neuron connects to one axon</p>
+                    <p>One axon connects to all neurons in a core</p>
+                    <p>There are $4096$ cores in a TrueNorth processor</p>
+                    <p>This gives $1,048,576$ neurons, $1,048,576$ axons, and $268,435,456$ synapes per chip</p>
+                    </section>
+
+                </section>
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+NEMO START
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11-->
+
+                <section><h2>NeMo Implementation</h2>
+
+                 <!--Event Flow &amp; Processing -->
+                    <!-- <section data-markdown="./markdowns/nemo_features.md">
+
+                    </section> -->
+                    <section data-markdown>
+                    <script type="text/template">
+                    ### NeMo Features
+- "Heartbeat" messages that provide implicit synchronization
+- Message fanout reduction through message routing
+- Reverse computation for optimistic scheduling
+- Supports very large simulation models
+- Supports simulation of non-IBM Hardware
+- Provides an open framework for simulation of new hardware designs:
+    + One neuron per core to thousands of neurons per core
+    + Weighted synapses
+    + Different spiking neuron models
+</script>
+</section>
+
+<section data-markdown>
+<script type="text/template">
+### NeMo Features
+- Implemented using ROSS (Rensselaer's Optimistic Simulation System)
+- ROSS provides optimistic and conservative parallel discrete event simulation
+- NeMo functions best in optimistic mode
+</script>
+</section>
+                    <section>
+                    <h3>Compared with IBM COMPASS</h3>
+                    <ul>
+                    <li> NeMo is open source and freely available to use</li>
+                    <li> NeMo is able to simulate non-IBM hardware</li>
+                    <li> NeMo supports various hardware architectures - IBM Blue Gene as well as Intel </li>
+                    </ul>
+                    </section>
+                	<section>
+                		<video data-autoplay width="45%" src="./animations/NeMoFlowDiagramAnimated.mp4" ></video>
+                	</section>
+                    <section>
+                        <br>
+                        <br>
+                        <ul>
+                        <li>Synapses send event messages to the neuron</li>
+                            <li> Neurons integrate the synapse weight at this point</li>
+                            <li>Previous voltage is saved in message</li>
+                        </ul>
+                        <img class="fleft" src="./nemo_flow/synapse1.png"  width=30%>
+                    </section>
+                    <section>
+
+                        <img  src="./nemo_flow/synapse2.png"  class="fleft" width=25%>
+                        <br><br>
+                        <p>Synapse Message Part 2</p>
+
+                        <ul>
+                        <li>Neurons check to see if a "heartbeat" message has been sent</li>
+                            <li>Send heartbeat message if one has not been sent</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <br><br>
+                    <img src="./nemo_flow/heartbeat1.png" width="50%">
+                        <h3>Heartbeat Message Received</h3>
+                        <p>Neurons receiving a heartbeat message have either:</p>
+                        <aside class="notes">
+                        When first receiving a heartbeat message - neurons need to run the rest of the IBM algorithm
+                        </aside>
+                        <ul>
+                        <li  class="fragment highlight-red">Had synaptic activity this tick</li>
+                            <li  class="fragment highlight-red">Have the potential to be self-firing</li>
+                            <ul>
+                            <div class="fragment">
+                            <li>Positive leak</li>
+                                <li >Negative leak with specific reset values</li>
+                                <li >And More!</li>
+                                </div>
+                            </ul>
+                        <li class="fragment highlight-red">
+                            Neurons save current membrane potential in the message
+                            </li>
+                        </ul>
+
+                    </section>
+                    <section>
+                        <br>
+                    <img src="./nemo_flow/heartbeat2.png" width="40%">
+                        <P>Neurons then:</P>
+                        <ul>
+                            <li>Retreive current time</li>
+                            <li>Calculate the number of ticks since last activating</li>
+                            <li>Store this as $t_d$ </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <br><br>
+                        <img src="./nemo_flow/heartbeat3.png" width="50%">
+                        <p>Leak calculation:</p>
+                         <pre><code data-trim data-noescape>
+while (td > 0) {
+    voltage = voltage - leakFunction();
+    td --;
+}
+
+    </code></pre>
+
+                    </section>
+                    <section>
+                        <br>
+                        <h3>Threshold, reset &amp; fire</h3>
+                        <img src="./nemo_flow/heartbeat4.png" width="40%"><br>
+
+                        <ul>
+                        <li>Check if voltage $V_j$ is $>$ than threshold</li>
+                            <li>Send fire message</li>
+                            <li>Reset or check negative threshold</li>
+
+                        </ul>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h2>Nemo Event Flow</h2>
+                    <img src="./diagrams/time.jpg" width="30%" class="fright">
+                    <p><br>Given an event at $Ax_0$(axon 0):</p>
+
+                                            <ul>
+                                                <li>Synapse $S_{0,0}$ through $S_{0,2}$ activate</li>
+                                                <li>All neurons integrate</li>
+                                                <li>Neurons that have weight 0 for an axon do not send heartbeat</li>
+                    </ul>
+
+                    </section>
+
+
+                <section><h3>NeMo Experimental Results</h3>
+                <section>
+                <h4>Model Validation</h4>
+
+
+                    <ul>
+                        <li>The IBM Model is able to reproduce Izhikevich's Interesting Biological Neurons</li>
+                        <li>We recreated two of these models using NeMo and IBM's published parameters</li>
+                    </ul>
+
+                        <img src="./images/tonic_bursting_vld.jpg" width="30%" >
+                        <img src="./images/bursting_ibm.png"  width="20%">
+                        <p>
+                        <i> Tonic Bursting Function Results </i> <br>
+                        These are two of Izhikevich's Neuron Models, reproduced by Cassidy et al.
+                        </p>
+                        </section>
+                        <section>
+
+                        <img src="./images/phasic_spike.jpg" width="30%">
+                        <img src="./images/spike_ibm.png" width="20%">
+                        <p >
+                        <i>Phasic Spiking Results</i><br>
+                    These are two of Izhikevich's Neuron Models, reproduced by Cassidy et al.
+                    </p>
+
+
+
+
+                    </section>
+                    </section>
+                <section>
+                <h4>Performance Experements</h4>
+                    <section data-markdown>
+                    <script type="text/template">
+                    - Evaluation System
+                        - Center for Computational Innovations (CCI) IBM Blue Gene/Q
+                            - 64 Hardware Threads / Node
+                            - 16 GB Memory per Node
+                    - Ran a randomized network with 80% remote (off-core) probability
+                    - Neurons were organized in an "identity matrix" of 1-1 activations:
+                        - When neuron $n$ recevied a message from axon $n$, it would spike to a random axon.
+                    </script>
+                    </section>
+
+
+                    <section data-markdown>
+                    <script type="text/template">
+                        <img src="./result_img/weak_scaling_en_chart.jpg" width="50%" class="fright"><br>
+                        - NeMo Weak Scaling Performance
+                        - Running a randomly connected network
+                        - 80% remote message probability
+                        - Generally excellent results
+                        Note:
+                        Largest run simulated: 65536 cores, $1.77 × 10^{13}$ LPs - 1.7 trillion LPs on 1024 Blue Gene Q Nodes
+
+                    </script>
+
+                    </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                        <img src="./result_img/strong_scale.jpg" class="fill" width="50%" -->
+
+- Strong scaling shows initially excellent results
+- The simulation begins to loose parallelism
+- Larger simulation runs should improve strong scaling
+
+                        </script>
+                    </section>
+
+                </section>
+
+                <section><h2>Future Work</h2>
+                <p>The next steps for nemo include:</p>
+                    <ul>
+                        <li class="fragment">Integration with supercomputer simulation software (CODES) </li>
+                        <li class="fragment">JSON neuromorphic core design support</li>
+                        <li class="fragment">Pythonic I/O for integration with spiking neural network tools</li>
+                    </ul>
+                </section>
+                <section>
+                    Thank You!<br>
+                    <a href="refgen.html">References</a>
+                </section>
+
+
+                <!-- Citations -->
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+        <!-- End of presentation !-->
+        </div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+                history: true,
+				previewLinks: true,
+				center: true,
+                width:"100%",
+                height:"100%",
+                margin: 0.05,
+                minScale:0.1,
+                maxScale:2,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+
+
+                    { src: 'plugin/math/math.js', async:true},
+                    //{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize('scroll'); toc_progress.create(); } }
+				]
+			});
+			Reveal.configure({
+  keyboard: {
+    13: 'next', // go to the next slide when the ENTER key is pressed
+    27: function() {}, // do something custom when ESC is pressed
+    32: null // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)
+  }
+});
+		</script>
+
+	</body>
+</html>

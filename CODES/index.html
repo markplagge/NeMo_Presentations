@@ -127,8 +127,8 @@ Unlike a traditional Neural Network Neuron:
 - Neurons do not need to fire at every time-step $t$
 - Activation level is increased with input spikes
 
-![](./diagrams/spike_output.png)
-![](./diagrams/spike_network.jpg)
+<img src="./diagrams/spike_output.png" width = 30%>
+<img src="./diagrams/spike_network.jpg">
 
 
                      </script>
@@ -441,7 +441,8 @@ while (td > 0) {
                         <img src="./nemo_flow/heartbeat4.png" width="40%"><br>
 
                         <ul>
-                        <li>Check if voltage $V_j$ is $>$ than threshold</li>
+                        <li>Check if voltage ($V_j$) is greater than the threshold ($\alpha$)
+													<br>$V_j \geq \alpha$</li>
                             <li>Send fire message</li>
                             <li>Reset or check negative threshold</li>
 
@@ -505,7 +506,7 @@ while (td > 0) {
                             - 16 GB Memory per Node
                     - Ran a randomized network with 80% remote (off-core) probability
                     - Neurons were organized in an "identity matrix" of 1-1 activations:
-                        - When neuron $n$ recevied a message from axon $n$, it would spike to a random axon.
+                        - When neuron $n$ received a message from axon $n$, it would spike to a random axon.
                     </script>
                     </section>
 
@@ -597,7 +598,10 @@ while (td > 0) {
 					{ src: 'plugin/notes/notes.js', async: true },
 
 
+
+                    //{ src: 'plugin/math-katex/math-katex.js', async:true},
                     { src: 'plugin/math/math.js', async:true},
+                    
                     //{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize('scroll'); toc_progress.create(); } }
 				]
 			});
